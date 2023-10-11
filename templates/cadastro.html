@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/cadastro.css">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="main-cadastro">
+        <form class="form-cadastro" id="form-cadastro" method="post">
+            <div class="textfield">
+                <label for="username">Usuário</label>
+                <input type="text" name="username" placeholder="Usuário" required>
+            </div>
+            <div class="textfield">
+                <label for="password">Senha</label>
+                <input type="password" name="password" placeholder="Senha" required>
+            </div>
+            <div class="textfield">
+                <label for="password">Confirme a Senha</label>
+                <input type="password" name="password" placeholder="Confirme a senha" required>
+            </div>
+            <div class="btns">
+                <button class="btn-cadastro" type="submit">Cadastrar</button>
+                <a href="login">
+                    <button class="btn-voltar" type="button">Voltar</button>
+                </a>
+            </div>
+        </form>
+    </div>
+
+</html>
