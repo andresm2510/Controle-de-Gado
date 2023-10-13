@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/fazenda.css">
+    <title>Fazenda</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="perfil">
+            <nav class="nav_perfil">
+                <img src="/static/images/logo.png" class="logo">
+                <div class="titulo">
+                    <h1>Fazenda</h1>
+                </div>
+                <ul>
+                    <li><a href="#">Fazenda</a></li>
+                    <li><a href="#">Veterinária</a></li>
+                    <li><a href="#">Rebanho</a></li>
+                </ul>
+                <img src="/static/images/user-regular-24.png" alt="Foto Usuario" class="foto_usuario"
+                    onclick="toggleMenu()">
+
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            <img src="/static/images/user-regular-24.png" alt="Foto Usuario">
+                            <h3>Usuario</h3>
+                        </div>
+
+                        <hr>
+
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/user-detail-solid-24.png" alt="Foto Usuario">
+                            <p>Configurações da Conta</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/help-circle-regular-24.png" alt="Foto Usuario">
+                            <p>Ajuda e Suporte</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/phone-regular-24.png" alt="Foto Usuario">
+                            <p>Contato</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/exit-regular-24.png" alt="Foto Usuario">
+                            <p>Sair</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-fazenda">
+        <div class="card-indicadores">
+            <div class="cabecas">
+                <h1>234</h1>
+                <h3>Cabeças de gado</h3>
+            </div>
+            <div class="gestacoes">
+                <h1>17</h1>
+                <h3>Gestações</h3>
+            </div>
+            <div class="cotacao">
+                <h1>R$233,05</h1>
+                <h3>Cotação do arroba do boi hoje</h3>
+            </div>
+            <div class="ocorrencias">
+                <ol>
+                    <li>Consulta Veterinaria 19/09/2023</li>
+                    <li>Consulta Veterinaria 19/09/2023</li>
+                    <li>Consulta Veterinaria 19/09/2023</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="#" class="logo"></a>
+
+        <nav class="navbar">
+            <a href="#">Fazenda</a>
+            <a href="#">Veterinária</a>
+            <a href="#">Rebanho</a>
+        </nav>
+    </footer>
+
+
+    <script>
+        let subMenu = document.getElementById("subMenu");
+
+        function toggleMenu() {
+            subMenu.classList.toggle("open-menu");
+        }
+    </script>
+</body>
+
+</html>
