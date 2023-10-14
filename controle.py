@@ -1,7 +1,7 @@
 # Incluindo as bibliotecas
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for , flash
 # Incluindo o arquivo de modelo
-from modelo import Animal, Vaca
+import modelo
 
 app = Flask(__name__)
 
@@ -13,7 +13,12 @@ def main():
         loginNome = request.form['username']
         loginSenha = request.form['password']
         if botaoSelecionado == 'logar':
-            return redirect("/fazenda")
+            if modelo.Usuario.login(loginNome, loginSenha):
+                return redirect("/fazenda")
+            else:
+                flash("Usuário ou senha incorretos")
+                return redirect("/")
+
         elif botaoSelecionado == 'cadastro':
             return redirect('/cadastro')
     return render_template("login.html")
