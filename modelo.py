@@ -13,6 +13,7 @@ class Animal:
         self.raça = raça
         self.pasto = pasto 
         self.peso = 0
+        self.estado = 0 #0 = normal, se for gestante atualizaremos para 1 
 
     def atualizarPeso (self, peso):
         self.peso = peso
@@ -34,14 +35,18 @@ class Vaca(Animal):
     pass
 
 class Usuario:
-    def __init__ (self, _id, nome, email, senha):
-        self._id = _id
+    def __init__ (self, nome, email, senha):
+    
         self.nome = nome
         self.email = email
         self.senha = generate_password_hash(senha)
 
     def cadastrar(self):
         collection3.insert_one(self.__dict__)
+    
+    def get_id(self):
+        return str(self._id)
+
 
     def login(self, nome, senha): 
         x= collection3.find_one({'nome': nome})
