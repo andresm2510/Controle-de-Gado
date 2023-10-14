@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,23 +10,32 @@
 
 <body>
     <div class="main-login">
-        <div class="card-login">
-            <form class="form-login" id="form-login" method="POST">
-                <div class="textfield">
-                    <label for="username">Usuário:</label><br>
-                    <input type="text" minlength="3" maxlength="12" name="username" placeholder="Usuário" required>
-                </div>
-                <div class="textfield">
-                    <label for="password">Senha:</label><br>
-                    <input type="password" minlength="4" maxlength="8" name="password" placeholder="Senha" required>
-                </div>
-                <div class="btns">
-                    <button class="btn-login" name="botao" value="logar">Logar</button>
-                    <button class="btn-cadastrar" name="botao" value="cadastro">Fazer cadastro</button>
-                </div>
-            </form>
+        <div class="left-login">
+            <h1>Seja bem-vindo!</h1>
+            <img src="/static/images/taken-animate.svg" class="left-login-img" alt="Vaquinha">
         </div>
-    </div>
+        <div class="right-login">
+            <div class="card-login">
+                
+                <h1>LOGIN</h1>
+                <form class="form-login" id="form-login" method="POST">
+                    <div class="textfield">
+                        <label for="username">Usuário</label>
+                        <input type="text" name="username" placeholder="Usuário" required>
+                    </div>
+                    <div class="textfield">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" placeholder="Senha" required>
+                    </div>
+                    <div class="btns">
+                        <button class="btn-login" type="submit">Login</button>
+                        <a href="cadastro.html">
+                            <button class="btn-cadastrar" type="button">Cadastrar</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
 </body>
 
 </html>
