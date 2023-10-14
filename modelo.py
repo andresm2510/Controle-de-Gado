@@ -4,8 +4,8 @@ from pymongo import MongoClient
 banco = MongoClient("mongodb+srv://andre:GpGIBvmocawfazxa@cluster0.egthg3z.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp")
 db= banco['ControleGado']
 collection = db['Gado']
-collection2=['Vacas']
-collection3=['usuarios']
+collection2= db['Vacas']
+collection3= db['usuarios']
 
 class Animal:
     def __init__ (self, _id, raça, pasto):
@@ -14,6 +14,7 @@ class Animal:
         self.pasto = pasto 
         self.peso = 0
         self.estado = 0 #0 = normal, se for gestante atualizaremos para 1 
+        self.sexo = 1 # 1 = femea, 0 = macho
 
     def atualizarPeso (self, peso):
         self.peso = peso
@@ -21,8 +22,11 @@ class Animal:
     def mudarPasto (self, novoPasto):
         self.pasto = novoPasto
 
-    def cadastrar(self):
+    def cadastrar(self,peso):
+        self.peso = peso
         collection.insert_one(self.__dict__)
+        if self.sexo == 1:
+            Vaca(self._id, self.raça, self.pasto).cadastrar()
 
 
 class Vaca(Animal):
@@ -32,7 +36,15 @@ class Vaca(Animal):
         
     def novaGestação (self, dataCrias):
         self.dataCrias.append(dataCrias)
-    pass
+    
+    def get_self(self , _id):
+        return collection.find_one({'_id': _id})
+    
+    def cadastrar(self):
+        get_self = collection.find_one({'_id': self._id})################
+        collection2.insert_one(self.__dict__)
+
+    
 
 class Usuario:
     def __init__ (self, nome, email, senha):
