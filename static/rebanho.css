@@ -214,6 +214,7 @@
     align-items: center;
     border-radius: 60px;
     padding: 10px 20px;
+    backdrop-filter: blur(4px) saturate(180%);
 }
 
 .form_searchbar input{
@@ -222,12 +223,13 @@
     border: 0;
     outline: none;
     padding: 24px 20px;
-    font-size: 20px;
+    font-size: 16px;
     color:#1e4613;
 }
 
 ::placeholder{
     color: #1e4613;
+    font-size: 16px;
 }
 
 
@@ -246,10 +248,10 @@
 
 .container_indicadores{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 140px;
+    height: 90px;
     width: 90%;
     border-radius: 10px;
     background:rgb(168, 168, 168);
@@ -257,15 +259,22 @@
 }
 
 .container{
-    height: 15px;
-    width: 120px;
-    border-radius: 10px;
+    height: 90%;
+    width: 100%;
     margin: 15px;
 }
 
 .container p {
+    margin-top: 25px;
     font-size: 12px;
     font-weight: 600;
+}
+
+.container img{
+    height: 80px;
+    width: 80px;
+    margin: 0;
+    padding: 0;
 }
 
 .fazenda-right{
