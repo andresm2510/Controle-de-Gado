@@ -4,11 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/veterinaria.css">
+    <link rel="stylesheet" href="/static/rebanho.css">
     <title>Rebanho</title>
 </head>
 
 <body>
+
+    <header class="header">
+        <div class="perfil">
+            <nav class="nav_perfil">
+                <img src="/static/images/logo.png" class="logo">
+                <ul>
+                    <li><a href="/templates/fazenda.html">Fazenda</a></li>
+                    <li><a href="/templates/veterinaria.html">Veterinária</a></li>
+                    <li><a href="/templates/rebanho.html">Rebanho</a></li>
+                </ul>
+                <div class="botao_usuario" onclick="toggleMenu()">
+                    <p>Michael Wazawski</p>
+                    <img src="/static/images/mike.jfif" alt="Foto Usuario" class="foto_usuario">
+                </div>
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            <img src="/static/images/mike.jfif" alt="Foto Usuario">
+                            <h3>Michael Wazawski</h3>
+                        </div>
+
+                        <hr>
+
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/user-detail-solid-24.png" alt="Foto Usuario">
+                            <p>Configurações da Conta</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/help-circle-regular-24.png" alt="Foto Usuario">
+                            <p>Ajuda e Suporte</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/phone-regular-24.png" alt="Foto Usuario">
+                            <p>Contato</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/exit-regular-24.png" alt="Foto Usuario">
+                            <p>Sair</p>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <div class="main-rebanho">
         <div class="card-indicadores">
             <div class="gestacoes">
