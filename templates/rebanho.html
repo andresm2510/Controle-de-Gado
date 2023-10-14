@@ -57,32 +57,63 @@
         </div>
     </header>
 
-    <div class="main-veterinaria">
-        <div class="card-indicadores">
-            <div class="gestacoes">
-                <h1>Gestações</h1>
-                <div class="card1">
-                    <div class="container">
-                        <h3>Brinco: <br>2345678</h3>
-                    </div>
-                    <div class="container">
-                        <h3>Previsão para parir: <br>8 semanas</h3>
-                    </div>
-                    <div class="container">
-                        <h3>Gastos totais: <br>R$999,999</h3>
-                    </div>
-                    <div class="container">
-                        <h3>Tempo de Gestacao: <br>32 semanas</h3>
-                    </div>
+    <div class="main-fazenda">
+        <div class="fazenda-left">
+            <div class="searchbar">
+                <form action="" class="form_searchbar">
+                    <input type="text" placeholder="Pesquise o seu chifrudo:" name="q">
+                    <button type="submit"><img src="/static/images/search-alt-2-regular-24.png"
+                            alt="Pesquisar"></button>
+                </form>
+            </div>
+            <div class="container_indicadores">
+                <div class="container">
+                    <p>Brinco:</p>
+                    <p>2345678</p>
+                </div>
+                <div class="container">
+                    <p>Previsão para parir:</p>
+                    <p>8 semanas</p>
+                </div>
+                <div class="container">
+                    <p>Gastos Totais:</p>
+                    <p>R$999,99</p>
+                </div>
+                <div class="container">
+                    <p>Tempo de Gestação:</p>
+                    <p>32 semanas</p>
                 </div>
             </div>
-            <div class="ganho_peso">
-                <img src="/static/graficoexemplo.jpg" alt="Exemplo de Gráfico">
+        </div>
+        <div class="fazenda-right">
+            <div class="cadastrar_gado">
+                <img src="" alt="">
+                <p>Gado</p>
+            </div>
+            <div class="gado_selecionado">
+                <div class="gado_img">
+                    <img src="" alt="">
+                </div>
+                <div class = container_gado>
+                    <p>a</p>
+                </div>
+                <div class = container_gado>
+                    <p>b</p>
+                </div>
+                <div class = container_gado>
+                    <p>c</p>
+                </div>
             </div>
         </div>
     </div>
 
-    
+    <script>
+        let subMenu = document.getElementById("subMenu");
+
+        function toggleMenu() {
+            subMenu.classList.toggle("open-menu");
+        }
+    </script>
 
 </body>
 
