@@ -50,6 +50,22 @@ def login():
 #página de cadastro dos animais
 @app.route('/rebanho', methods=['POST', 'GET'])
 def rebanho():
+    '''
+    APENAS UM PROTÓTIPO
+
+    if request.method == 'POST':
+        isVaca = request.form['isVaca'] 'Seria o valor 0 (pode ser um form de pulldown que se for vaca retorna 1 e se for boi retorna 0)'
+        if isVaca == 1:
+            brinco = request.form['brinco']
+            raça = request.form['raça']
+            pasto = request.form['pasto']
+            peso = request.form['peso']
+            gestacao = request.form['gestacao']
+            dataCria = request.form['dataCria']
+            modelo.Animal.cadastrar(brinco, raça, pasto, peso)
+
+    '''
+    
     return render_template("rebanho.html")
 
 @app.route('/veterinaria', methods=['POST', 'GET'])
