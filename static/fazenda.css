@@ -1,19 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 *{
     margin:0;
     padding:0;
-    font-family:'Poppins', sans-serif;
+    font-family:'Noto-Sans', sans-serif;
     box-sizing: border-box;
 }
 
 .perfil{
     width: 100%;
     min-height: 30vh;
-    background: #eceaff;
-    color:#525252;
+    background: #095255;
+    color:#095255;
 }
 
 .nav_perfil{
-    background: #1a1a1a;
+    background: #ffffff;
     width: 100%;
     padding: 10px 10%;
     display: flex;
@@ -23,18 +25,24 @@
 }
 
 .titulo {
+    display: flex;
+    border-radius: 10px;
     width: 100vw;
+    margin: 10px 0;
+    padding: 30px;
+    height: 70px;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .titulo h1{
-    color: #fefefe;
-    font-weight: 800;
+    color: #095255;
+    font-size: 40px;
 }
 
 .logo{
-    width: 90px;
+    width: 80px;
 }
 
 .foto_usuario{
@@ -45,6 +53,12 @@
 }
 
 .nav_perfil ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #095255;
+    height: 50px;
     width: 100%;
     text-align: right;
     font-size: 20px;
@@ -57,13 +71,14 @@
 }
 
 .nav_perfil ul li a{
-    color:#fff;
+    color:#ffffff;
+    font-weight: 600;
     text-decoration: none;
 }
 
 .sub-menu-wrap{
     position:absolute;
-    top:100%;
+    top:80%;
     right:10%;
     width: 320px;
     max-height: 0px;
@@ -139,9 +154,51 @@
 }
 
 .main-fazenda{
-    background: #1a1a1a;
+    background: #095255;
+    display: flex;
+    align-items: space-between;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100vw;
+    height: 100vh;
 }
 
 .card-indicadores{
+    max-height: 60%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
+.container{
+    max-height: 50%;
+    align-items: center;
+    background: #ffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+}
+
+.ocorrencias{
+    overflow-y:scroll;
+    width: 700px;
+    max-width: 60vw;
+    border-radius: 20px;
+    margin: 10px 0 20px;
+    padding: 30px;
+    background: #ffff;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+}
+
+.ocorrencia_container{
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background: #ccc;
 }
