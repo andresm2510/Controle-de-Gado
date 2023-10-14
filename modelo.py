@@ -11,8 +11,6 @@ class Animal:
     def mudarPasto (self, novoPasto):
         self.pasto = novoPasto
 
-    
-
 class Vaca(Animal):
     def __init__ (self, _id, raça, pasto, ):
         super(). __init__(self, _id, raça, pasto)
