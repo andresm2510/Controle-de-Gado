@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,26 +10,36 @@
 
 <body>
     <div class="main-cadastro">
-        <form class="form-cadastro" id="form-cadastro" method="post">
-            <div class="textfield">
-                <label for="username">Usuário</label>
-                <input type="text" name="username" placeholder="Usuário" required>
+        <div class="box-cadastro">
+            <div class="card-cadastro">
+                <h1>CADASTRE-SE</h1>
+                <form class="form-cadastro" id="form-cadastro" method="POST">
+                    <div class="textfield">
+                        <label for="username">Usuário:</label>
+                        <input type="text" name="username" placeholder="Usuário" required>
+                    </div>
+                    <div class="textfield">
+                        <label for="email">E-mail:</label>
+                        <input type="text" name="email" placeholder="Usuário" required>
+                    </div>
+                    <div class="textfield">
+                        <label for="matricula">Matrícula:</label>
+                        <input type="text" name="matricula" placeholder="Matrícula" required>
+                    </div>
+                    <div class="textfield">
+                        <label for="password">Senha:</label>
+                        <input type="password" name="password" placeholder="Senha" required>
+                    </div>
+                    <div class="btns">
+                        <a href="/">
+                            <button class="btn-voltar" type="button">Voltar</button>
+                        </a>
+                        <button class="btn-confirmar" type="submit">Confirmar</button>
+                    </div>
+                </form>
             </div>
-            <div class="textfield">
-                <label for="password">Senha</label>
-                <input type="password" name="password" placeholder="Senha" required>
-            </div>
-            <div class="textfield">
-                <label for="password">Confirme a Senha</label>
-                <input type="password" name="password" placeholder="Confirme a senha" required>
-            </div>
-            <div class="btns">
-                <button class="btn-cadastro" type="submit">Cadastrar</button>
-                <a href="login.html">
-                    <button class="btn-voltar" type="button">Voltar</button>
-                </a>
-            </div>
-        </form>
+        </div>
     </div>
+</body>
 
 </html>
