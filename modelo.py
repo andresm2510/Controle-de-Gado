@@ -27,6 +27,9 @@ class Animal:
         collection.insert_one(self.__dict__)
         if self.sexo == 1:
             Vaca(self._id, self.raça, self.pasto).cadastrar()
+        
+        '''if self.sexo == 0:
+            Touro(self._id, self.raça, self.pasto).cadastrar()'''
 
 
 class Vaca(Animal):
@@ -43,6 +46,14 @@ class Vaca(Animal):
     def cadastrar(self):
         get_self = collection.find_one({'_id': self._id})################
         collection2.insert_one(self.__dict__)
+
+    def vizualizarVacas(self,brinco):
+        x= collection2.find_one({'_id': brinco})
+        data= x['dataCrias']
+        peso = x['peso']
+        pasto = x['pasto']
+
+        return (data, peso, pasto)
 
     
 
