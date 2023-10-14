@@ -30,11 +30,11 @@ def login():
 
 #página de cadastro dos animais
 @app.route('/rebanho', methods=['POST', 'GET'])
-def cadastro_animais():
+def rebanho():
     return render_template("rebanho.html")
 
 @app.route('/veterinaria', methods=['POST', 'GET'])
-def cadastro_animais():
+def veterinaria():
     return render_template("veterinaria.html")
 
 app.run(debug=True)

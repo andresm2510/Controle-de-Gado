@@ -4,16 +4,30 @@
     margin:0;
     font-family: 'Noto-Sans', sans-serif;
 }
-
 .body * {
     box-sizing: border-box;
 }
-
 .main-login{
-    background: rgb(249, 255, 254);
+    background: rgb(93, 139, 79);
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;
+    align-items: center;*/
+}
+.card-login{
+    padding: 20px;
+}
+label{
+    font-size: 18px;
+    color: white;
+}
+input{
+    width: 200px;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    outline: 0;
+    border-radius: 5px;
+    background-color: rgb(201, 240, 198);
 }
