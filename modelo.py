@@ -22,6 +22,9 @@ class Animal:
     def mudarPasto (self, novoPasto):
         self.pasto = novoPasto
 
+    def touro (self):
+        self.sexo = 0
+
     def cadastrar(self,peso):
         self.peso = peso
         collection.insert_one(self.__dict__)
