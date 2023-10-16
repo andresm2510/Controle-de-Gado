@@ -117,9 +117,13 @@ nav.menu_lateral.expandir .txt-link{
 
 .suporte{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .suporte img{
+    width: 500px;
     border-radius: 50px;
 }
