@@ -7,183 +7,106 @@
     box-sizing: border-box;
 }
 
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
 /* Header */
 
-.perfil {
-    width: 100%;
-    background: #1e4613;
-    color: #ffffff;
-}
-
-.nav_perfil {
-    background: #1e4613;
-    width: 100%;
-    max-height: 10vh;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
-
-.logo {
-    width: 192px;
-}
-
-.lista-links {
-    display: flex;
-    justify-content: star;
-    padding: 10px;
-    margin: 20px;
-    align-items: center;
-    border-radius: 10px;
-    background: #1e4613;
-    height: 50px;
-    width: 100%;
-    text-align: right;
-    font-size: 16px;
-}
-
-
-.div-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
+nav.menu_lateral{
+    width: 80px;
     height: 100%;
-    margin: 10px 20px;
+    background-color: #1e4613;
+    padding:40px 0 40px 1%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .35s;
 }
 
-.div-link:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: background-color 0.2s;
-    border-radius: 10px;
+nav.menu_lateral.expandir{
+    width: 300px;
 }
 
-
-.div-link a {
-    color: #ffffff;
-    font-weight: 500;
-    text-decoration: none;
+.btn-expandir{
+    width: 100%;
+    padding-left: 10px; 
 }
 
-.div-link a:hover {
+.btn-expandir i{
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.ul-itens{
+    height: 100%;
+    list-style: none;
+}
+
+.ul-itens li.ativo{
+    background-color:rgb(221, 221, 221);
+}
+
+.ul-itens li.ativo .txt-link{
     color: #1e4613;
-    font-weight: 400;
-    text-decoration: none;
 }
 
+.ul-itens li.ativo .icon{
+    color: #1e4613;
+}
 
-.botao_usuario {
-    width: 27%;
-    height: 35px;
+.ul-itens li.item-menu{
+    transition: .2s;
+}
+
+.ul-itens li.item-menu:hover{
+    background: rgb(221, 221, 221);
+}
+
+.ul-itens li.item-menu a{
+    color: white;
+    text-decoration: none;
+    font-size:20px;
+    padding: 20px 4%;
     display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+.ul-itens li.item-menu a:hover{
+    color: #1e4613;
+}
+
+.ul-itens li.item-menu a .txt-link{
+    margin-left: 70px;
+    transition: 1s;
+}
+
+nav.menu_lateral.expandir .txt-link{
+    margin-left: 40px;
+}
+
+.ul-itens li.item-menu a .icon > i{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.titulo{
+    display: flex;
+    background-color: #1e4613;
     justify-content: center;
     align-items: center;
-    text-align: right;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-}
-
-.botao_usuario:hover {
-    color: #1e4613;
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: background-color 0.2s;
-    border-radius: 10px;
-}
-
-.botao_usuario p {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.foto_usuario {
-    width: 50px;
-    border-radius: 50%;
-    margin-left: 5px;
-}
-
-.sub-menu-wrap {
-    position: absolute;
-    top: 80%;
-    right: 0;
-    width: 250px;
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.5s;
-}
-
-.sub-menu-wrap h3 {
-    color: #ffffff;
-}
-
-.sub-menu-wrap.open-menu {
-    max-height: 400px;
-}
-
-.sub-menu {
-    background: #1e4613;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 20px;
-    margin: 10px;
-    overflow: hidden;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-}
-
-.user-info .h3 {
-    font-weight: 500;
-}
-
-.user-info img {
-    width: 40px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.sub-menu hr {
-    border: 0;
-    height: 1px;
     width: 100%;
-    background: #ffffff;
-    margin: 15px 0 10px;
+    height: 68px;
 }
 
-.sub-menu-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #ffffff;
-    margin: 12px 0;
-}
+/*Corpo da Pagina*/
 
-.sub-menu-link p {
-    width: 100%;
-}
-
-.sub-menu img {
-    width: 40px;
-    background: #e5e5e5;
-    border-radius: 50%;
-    padding: 8px;
-    margin-right: 15px;
-}
-
-.sub-menu-link span {
-    font-size: 22px;
-    transition: transform 0.5s;
-}
-
-.sub-menu-link:hover span {
-    transform: translateX(5px);
-}
-
-.sub-menu-link:hover p {
-    font-weight: 600;
+.main{
+    height: 100vh;
+    width: 100vw;
+    background-color: #5d8b4f;
 }
