@@ -49,13 +49,34 @@
     </header>
 
     <div class="main">
-        <div class = "img_perfil">
+        <div class="img_perfil">
             <img src="/static/images/mike.jfif" alt="Michael Wazawski">
             <p>Michael Wazawski</p>
         </div>
-        <div class = "card_info">
-            <div class="container">
-                
+        <div class="card_info">
+            <div class="box-cadastro">
+                <div class="card-cadastro">
+                    <form class="form-cadastro" id="form-cadastro" method="POST">
+                        <div class="textfield">
+                            <label for="username">Usuário:</label>
+                            <input type="text" name="username" placeholder="Usuário" required>
+                        </div>
+                        <div class="textfield">
+                            <label for="email">E-mail:</label>
+                            <input type="text" name="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="textfield">
+                            <label for="password">Senha:</label>
+                            <input type="password" name="password" placeholder="Senha" required>
+                        </div>
+                        <div class="btns">
+                            <a href="/">
+                                <button class="btn-voltar" type="button">Voltar</button>
+                            </a>
+                            <button class="btn-confirmar" type="submit">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

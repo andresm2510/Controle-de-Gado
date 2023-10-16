@@ -106,7 +106,20 @@ nav.menu_lateral.expandir .txt-link{
 /*Corpo da Pagina*/
 
 .main{
+    display: flex;
     height: 100vh;
     width: 100vw;
     background-color: #5d8b4f;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.suporte{
+    display: flex;
+    text-align: center;
+}
+
+.suporte img{
+    border-radius: 50px;
 }
