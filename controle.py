@@ -43,7 +43,7 @@ def main():
     return render_template("login.html")
 
 #página de cadastro das pessoas
-@app.route('/cadastro.html', methods=['POST', 'GET'])
+@app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
            
     if request.method == 'POST':
@@ -57,14 +57,14 @@ def cadastro():
     return render_template('cadastro.html') 
 
 #página principal da fazenda
-@app.route('/fazenda.html', methods=['POST', 'GET'])
+@app.route('/fazenda', methods=['POST', 'GET'])
 def fazenda():
     if request.method=='POST':
         return("/rebanho.html")
     return render_template("fazenda.html")
 
 #página de cadastro dos animais
-@app.route('/rebanho.html', methods=['POST', 'GET'])
+@app.route('/rebanho', methods=['POST', 'GET'])
 def rebanho():
     '''
     APENAS UM PROTÓTIPO###########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -104,7 +104,7 @@ def rebanho():
     '''
     return render_template("rebanho.html")
 
-@app.route('/veterinaria.html', methods=['POST', 'GET'])
+@app.route('/veterinaria', methods=['POST', 'GET'])
 def veterinaria():
     return render_template("veterinaria.html")
 
