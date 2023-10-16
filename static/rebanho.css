@@ -264,7 +264,6 @@
 
 .gadoList {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -274,7 +273,6 @@
 
 .container_indicadores {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 80px;
@@ -284,7 +282,6 @@
     background-color: #f0f0f0;
     transition: background-color 0.2s;
     margin-bottom: 20px;
-    position: relative;
     overflow: hidden;
 }
 
