@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/veterinaria.css">
-    <title>Rebanho</title>
+    <title>Veterinaria</title>
 </head>
 
 <body>
@@ -14,11 +14,17 @@
         <div class="perfil">
             <nav class="nav_perfil">
                 <img src="/static/images/logo.png" class="logo">
-                <ul>
-                    <li><a href="/templates/fazenda.html">Fazenda</a></li>
-                    <li><a href="/templates/veterinaria.html">Veterinária</a></li>
-                    <li><a href="/templates/rebanho.html">Rebanho</a></li>
-                </ul>
+                <div class = "lista-links">
+                    <div class = "div-link">
+                        <a href = "/templates/fazenda.html">Fazenda</a>
+                    </div>
+                    <div class = "div-link">
+                        <a href = "/templates/veterinaria.html">Veterinaria</a>
+                    </div>
+                    <div class = "div-link">
+                        <a href = "/templates/rebanho.html">Rebanho</a>
+                    </div>
+                </div>
                 <div class="botao_usuario" onclick="toggleMenu()">
                     <p>Michael Wazawski</p>
                     <img src="/static/images/mike.jfif" alt="Foto Usuario" class="foto_usuario">
@@ -141,13 +147,7 @@
         </div>
     </div>
 
-    <script>
-        let subMenu = document.getElementById("subMenu");
-
-        function toggleMenu() {
-            subMenu.classList.toggle("open-menu");
-        }
-    </script>
+    <script src="/static/js/script.js"></script>
 
 </body>
 

@@ -1,5 +1,5 @@
-const ocorrencia_container = document.querySelector("#ocorrencia_container")
+let subMenu = document.getElementById("subMenu");
 
-const getOcorrencia = async() => {
-    
-}
+        function toggleMenu() {
+            subMenu.classList.toggle("open-menu");
+        }

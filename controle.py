@@ -44,7 +44,6 @@ def main():
 #página de cadastro das pessoas
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
-           
     if request.method == 'POST':
         nome = request.form['username']
         email = request.form['email']
@@ -106,5 +105,15 @@ def rebanho():
 @app.route('/veterinaria', methods=['POST', 'GET'])
 def veterinaria():
     return render_template("veterinaria.html")
+
+
+@app.route('/detalhes_gado/<int:gado_id>', methods=['GET'])
+def detalhes_gado(gado_id):
+    # Use o gado_id para buscar os detalhes do gado no MongoDB
+    # Substitua esta parte com as consultas reais ao banco de dados
+    detalhes_gado = consulta_detalhes_gado_no_mongodb(gado_id)
+    
+    # Renderize um template para exibir os detalhes do gado
+    return render_template('detalhes_gado.html', detalhes_gado=detalhes_gado)
 
 app.run(debug=True)

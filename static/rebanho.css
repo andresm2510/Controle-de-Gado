@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    font-family:'Noto-Sans', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto-Sans', sans-serif;
     box-sizing: border-box;
 }
 
 /* Header */
 
-.perfil{
+.perfil {
     width: 100%;
     background: #1e4613;
-    color:#ffffff;
+    color: #ffffff;
 }
 
-.nav_perfil{
+.nav_perfil {
     background: #1e4613;
     width: 100%;
     max-height: 10vh;
@@ -26,38 +26,56 @@
     position: relative;
 }
 
-.logo{
+.logo {
     width: 192px;
 }
 
-.nav_perfil ul{
+.lista-links {
     display: flex;
-    justify-content: start;
+    justify-content: star;
     padding: 10px;
-    margin: 30px;
+    margin: 20px;
     align-items: center;
     border-radius: 10px;
     background: #1e4613;
     height: 50px;
     width: 100%;
     text-align: right;
-    font-size: 15px;
+    font-size: 16px;
 }
 
-.nav_perfil ul li{
-    display: inline-block;
-    list-style: none;
+
+.div-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 100%;
     margin: 10px 20px;
 }
 
-.nav_perfil ul li a{
-    color:#ffffff;
-    font-weight: 300;
+.div-link:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.2s;
+    border-radius: 10px;
+}
+
+
+.div-link a {
+    color: #ffffff;
+    font-weight: 500;
     text-decoration: none;
 }
 
-.botao_usuario{
-    width: 25%;
+.div-link a:hover {
+    color: #1e4613;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+
+.botao_usuario {
+    width: 27%;
     height: 35px;
     display: flex;
     justify-content: center;
@@ -68,61 +86,68 @@
     margin: 0;
 }
 
-.botao_usuario p{
+.botao_usuario:hover {
+    color: #1e4613;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.2s;
+    border-radius: 10px;
+}
+
+.botao_usuario p {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
 }
 
-.foto_usuario{
+.foto_usuario {
     width: 50px;
     border-radius: 50%;
-    margin-left:5px;
+    margin-left: 5px;
 }
 
-.sub-menu-wrap{
-    position:absolute;
-    top:80%;
-    right:0;
+.sub-menu-wrap {
+    position: absolute;
+    top: 80%;
+    right: 0;
     width: 250px;
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.5s;
 }
 
-.sub-menu-wrap h3{
-    color:#ffffff;
+.sub-menu-wrap h3 {
+    color: #ffffff;
 }
 
-.sub-menu-wrap.open-menu{
+.sub-menu-wrap.open-menu {
     max-height: 400px;
 }
 
-.sub-menu{
+.sub-menu {
     background: #1e4613;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 20px;
-    margin:10px;
+    margin: 10px;
     overflow: hidden;
 }
 
-.user-info{
+.user-info {
     display: flex;
     align-items: center;
 }
 
-.user-info .h3{
+.user-info .h3 {
     font-weight: 500;
 }
 
-.user-info img{
+.user-info img {
     width: 40px;
     border-radius: 50%;
     margin-right: 15px;
 }
 
-.sub-menu hr{
+.sub-menu hr {
     border: 0;
     height: 1px;
     width: 100%;
@@ -130,7 +155,7 @@
     margin: 15px 0 10px;
 }
 
-.sub-menu-link{
+.sub-menu-link {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -138,11 +163,11 @@
     margin: 12px 0;
 }
 
-.sub-menu-link p{
+.sub-menu-link p {
     width: 100%;
 }
 
-.sub-menu img{
+.sub-menu img {
     width: 40px;
     background: #e5e5e5;
     border-radius: 50%;
@@ -150,26 +175,26 @@
     margin-right: 15px;
 }
 
-.sub-menu-link span{
+.sub-menu-link span {
     font-size: 22px;
     transition: transform 0.5s;
 }
 
-.sub-menu-link:hover span{
+.sub-menu-link:hover span {
     transform: translateX(5px);
 }
 
-.sub-menu-link:hover p{
+.sub-menu-link:hover p {
     font-weight: 600;
 }
 
 /* Conteudo */
 
-.header{
+.header {
     margin-bottom: 20px;
 }
 
-.main-fazenda{
+.main-fazenda {
     background: white;
     display: flex;
     justify-content: center;
@@ -178,87 +203,114 @@
     height: 100vh;
 }
 
-.titulo_gestacoes{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color:#1e4613;
-    text-align: center;
-    font-size: 24px;
-}
-
-.fazenda-left{
+.fazenda-left {
     align-items: center;
-    border-radius: 10px;
+    justify-content: center;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     background: rgb(207, 207, 207);
-    max-width: 30vw;
+    width: 80%;
     max-height: 80vh;
     margin: 0 80px;
     padding: 5px;
-    overflow-y: auto;
 }
 
-.searchbar{
-    display: flex;
-    width: 100%;
+.searchbar {
+    width: 40%;
     margin-bottom: 20px;
 }
 
-.form_searchbar{
-    width: 100%;
-    max-width:700px;
+.form_searchbar {
     height: 50px;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     align-items: center;
-    border-radius: 60px;
+    border-radius: 10px;
     padding: 10px 20px;
     backdrop-filter: blur(4px) saturate(180%);
 }
 
-.form_searchbar input{
+.form_searchbar input {
     background: transparent;
     flex: 1;
     border: 0;
     outline: none;
     padding: 24px 20px;
     font-size: 16px;
-    color:#1e4613;
+    color: #1e4613;
 }
 
-::placeholder{
+::placeholder {
     color: #1e4613;
     font-size: 16px;
 }
 
 
-.form_searchbar button img{
+.form_searchbar button img {
     width: 25px;
 }
 
-.form_searchbar button{
+.form_searchbar button {
     border: 0;
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background:rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
     cursor: pointer;
 }
 
-.container_indicadores{
+/* Lista de Gado */
+
+.gadoList {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90px;
-    width: 90%;
-    border-radius: 10px;
-    background:rgb(168, 168, 168);
-    margin-bottom: 20px;
+    width: 100%;
+    overflow-y: scroll;
 }
 
-.container{
+.container_indicadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 90%;
+    border-radius: 10px;
+    background: rgb(168, 168, 168);
+    background-color: #f0f0f0;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gadoList.active .container_indicadores{
+    height: auto;
+}
+
+#read_button {
+    border: none;
+    padding: 10px;
+    border-radius: 2px;
+    background-color: #1e4613;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+#read_button:hover{
+    background-color: transparent;
+    color: #1e4613;
+    transition: all 0.2s ease-in-out;
+}
+
+.container {
     height: 90%;
     width: 100%;
     margin: 15px;
@@ -270,25 +322,9 @@
     font-weight: 600;
 }
 
-.container img{
+.container img {
     height: 80px;
     width: 80px;
     margin: 0;
     padding: 0;
-}
-
-.fazenda-right{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    width: 50vw;
-}
-
-.fazenda-right h1{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color:#1e4613;
-    text-align: center;
-    font-size: 24px;
 }
