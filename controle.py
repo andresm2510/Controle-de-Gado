@@ -1,6 +1,7 @@
 # Incluindo as bibliotecas
 from flask import Flask, render_template, request, redirect, url_for , flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+import time
 # Incluindo o arquivo de modelo
 import modelo 
 
@@ -19,26 +20,24 @@ def load_user(x):
     return user
 
 def cadastrarUsuario(nome, email, senha):
-    user = {
-    "Nome": nome,
-    "E-mail": email,
-    "Senha": modelo.generate_password_hash(senha)
-    }
-    modelo.usuarios_collection.insert_one(user)
-
+    x = modelo.Usuario(nome, email, senha)
+    modelo.Usuario.cadastrar(x)
 
 @app.route('/', methods=['POST', 'GET'])
 def main():
     if request.method == 'POST':
         loginEmail = request.form['email']
         loginSenha = request.form['password']
-        if modelo.loginuser(loginEmail, loginSenha):
-            x= modelo.usuarios_collection.find({"E-mail":loginEmail})
+        '''print(loginEmail, loginSenha)'''
+        teste = modelo.Usuario.loginuser(loginEmail, loginSenha)
+        if teste:
+            x= modelo.usuarios_collection.find({"email":loginEmail})
             user = load_user(x)
             login_user(user)
             return redirect(url_for("/fazenda"))
         else:
             flash("Usuário ou senha incorretos")
+            print("Usuário ou senha incorretos")
             return redirect("/")
     return render_template("login.html")
 

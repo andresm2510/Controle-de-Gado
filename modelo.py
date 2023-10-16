@@ -105,22 +105,30 @@ class Vaca(Animal):
 class Usuario:
     def __init__ (self, nome, email, senha):
     
-        self.Nome = nome
-        self.Email = email
-        self.Senha = generate_password_hash(senha)
+        self.nome = nome
+        self.email = email
+        self.senha = generate_password_hash(senha)
     
     def get_id(self):
         return str(self._id)
 
-
+    def cadastrar(self):
+        usuarios_collection.insert_one(self.__dict__)
     
 
-def loginuser(nome, senha): 
-        x= usuarios_collection.find_one({'nome': nome})
-        if x and check_password_hash(x['senha'], senha):
-            return True
+    def loginuser(email, senha): 
+        x= usuarios_collection.find_one({'email': email})
+        if x is not None:
+            s = x['senha']
+            s1 = check_password_hash(s, senha)
+            if x and s1:
+                return True
+            else:
+                return False
+
         else:
-            return False
+            print('erro no email')
+            return False    
 
 
 
