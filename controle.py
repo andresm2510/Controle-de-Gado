@@ -8,17 +8,23 @@ import modelo
 app = Flask(__name__)
 app.secret_key = 'chave'  
 
-login_manager = LoginManager()
+'''login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 @login_manager.user_loader
-def load_user(x):
-    user_data = modelo.Usuario(x)
-    user = modelo.Usuario(user_data)
-    user._id = x
-    return user
-
+def load_user(email):
+    user_data = modelo.Usuario.get_user(email)
+    print('userdata ok')
+    time.sleep(10)
+    if user_data:
+        try:
+            user = modelo.Usuario(user_data['nome'], user_data['email'], user_data['senha'])
+            return user
+        except Exception as e:
+            print(f"Error creating user object: {e}")
+    return None
+'''
 def cadastrarUsuario(nome, email, senha):
     x = modelo.Usuario(nome, email, senha)
     modelo.Usuario.cadastrar(x)
@@ -31,10 +37,10 @@ def main():
         '''print(loginEmail, loginSenha)'''
         teste = modelo.Usuario.loginuser(loginEmail, loginSenha)
         if teste:
-            x= modelo.usuarios_collection.find({"email":loginEmail})
+            '''x= "loginEmail"
             user = load_user(x)
-            login_user(user)
-            return redirect(url_for("/fazenda"))
+            login_user(user)'''
+            return redirect(url_for("fazenda"))
         else:
             flash("Usuário ou senha incorretos")
             print("Usuário ou senha incorretos")
@@ -111,7 +117,7 @@ def veterinaria():
 def detalhes_gado(gado_id):
     # Use o gado_id para buscar os detalhes do gado no MongoDB
     # Substitua esta parte com as consultas reais ao banco de dados
-    detalhes_gado = consulta_detalhes_gado_no_mongodb(gado_id)
+    '''detalhes_gado = consulta_detalhes_gado_no_mongodb(gado_id)'''
     
     # Renderize um template para exibir os detalhes do gado
     return render_template('detalhes_gado.html', detalhes_gado=detalhes_gado)

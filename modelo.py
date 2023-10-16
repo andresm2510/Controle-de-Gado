@@ -1,5 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
+from flask_login import UserMixin
+import time
 
 banco = MongoClient("mongodb+srv://andre:GpGIBvmocawfazxa@cluster0.egthg3z.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp")
 
@@ -89,7 +91,7 @@ class Vaca(Animal):
         return gado_collection.find_one({'_id': _id})
     
     def cadastrar(self):
-        get_self = gado_collection.find_one({'_id': self._id})################
+        get_self = gado_collection.find_one({'_id': self._id})################ Isso ta meio inutil
         vaca_collection.insert_one(self.__dict__)
 
     def vizualizarVacas(self,brinco):
@@ -102,26 +104,32 @@ class Vaca(Animal):
 
     
 
-class Usuario:
+class Usuario(UserMixin):
     def __init__ (self, nome, email, senha):
     
         self.nome = nome
         self.email = email
         self.senha = generate_password_hash(senha)
     
-    def get_id(self):
-        return str(self._id)
 
     def cadastrar(self):
         usuarios_collection.insert_one(self.__dict__)
+    
+    def get_user( email):
+       a=  usuarios_collection.find_one({'email': email})
+       return a
     
 
     def loginuser(email, senha): 
         x= usuarios_collection.find_one({'email': email})
         if x is not None:
+            print('email ok')
+            time.sleep(20)
             s = x['senha']
             s1 = check_password_hash(s, senha)
             if x and s1:
+                print('senha ok')
+                time.sleep(20)
                 return True
             else:
                 return False
