@@ -106,7 +106,29 @@ nav.menu_lateral.expandir .txt-link{
 /*Corpo da Pagina*/
 
 .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: center;
     height: 100vh;
     width: 100vw;
     background-color: #5d8b4f;
+}
+
+.img_perfil{
+    margin-top: 30px;
+    align-items: center;
+    text-align: center;
+}
+
+.img_perfil img{
+    width: 120px;
+    height: 100px;
+    border-radius: 600px;
+}
+
+.img_perfil p{
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
 }

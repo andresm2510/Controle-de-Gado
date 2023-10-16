@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+body{
+    height: 300vh;
+    overflow-y: auto;
+}
+
 /* Header */
 
 .perfil {
@@ -200,7 +205,7 @@
     justify-content: center;
     margin: 0 auto;
     max-width: 100vw;
-    height: 100vh;
+    height: auto;
 }
 
 .fazenda-left {
@@ -211,7 +216,6 @@
     border-radius: 10px;
     background: rgb(207, 207, 207);
     width: 80%;
-    max-height: 80vh;
     margin: 0 80px;
     padding: 5px;
 }
@@ -262,87 +266,94 @@
 
 /* Lista de Gado */
 
-.gadoList {
+.gado-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-height: 90%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .container_indicadores {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 80px;
     width: 90%;
     border-radius: 10px;
     background: rgb(168, 168, 168);
     background-color: #f0f0f0;
     transition: background-color 0.2s;
+    margin-top: 10px;
     margin-bottom: 20px;
+    cursor: pointer;
+    transition: .2s;
 }
 
-.container_indicadores .container-hidden{
+.container-hidden{
     display: none;
 }
 
-.container_indicadores.active{
+.container_indicadores.expandir{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 400px;
+    max-width: 90%;
+    margin:20px;
+    padding:50px;
+}
+
+
+.container_indicadores.expandir .container{
+    text-align: center;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
+    height: 80px;
+    width: 120px;
+}
+
+.container_indicadores.expandir .container p{
+    display: block;
+    margin-top: 25px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.container_indicadores.expandir .container img{
+    display: block;
+    max-width: 100%;
+    height: 100px;
+    width: 80px;
+    margin: 10px;
+    padding: 0;
+}
+
+.container_indicadores.expandir .container-hidden{
+    display: block;
+    height: 80px;
+    width: 120px;
+}
+
+.container_indicadores.expandir .container-hidden p{
+    display: block;
+    margin-top: 25px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.container_indicadores.expandir .container-hidden img{
+    display: block;
     max-height: 90%;
     max-width: 100%;
-    height: auto;
-}
-
-.container_indicadores.active .container-hidden{
-    display: block;
-    height: 90%;
-    width: 100%;
-}
-
-.container_indicadores.active .container-hidden img{
-        max-height: 90%;
-        max-width: 100%;
-        width: 80px;
-        margin: 0;
-        padding: 0;
-}
-
-.container_indicadores .read_button::before{
-    content: 'Mostrar Mais';
-}
-
-.container_indicadores.active .read_button::before{
-    content: 'Mostrar Menos';
-}
-
-
-#read_button {
-    border: none;
-    padding: 10px;
-    border-radius: 2px;
-    background-color: #1e4613;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    margin: 10px;
-    transition: all 0.2s ease-in-out;
-}
-
-#read_button:hover{
-    background-color: transparent;
-    color: #1e4613;
-    transition: all 0.2s ease-in-out;
+    width: 80px;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     height: 90%;
     width: 100%;
+    transition: .2s;
 }
 
 .container p {
