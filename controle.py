@@ -18,15 +18,22 @@ def load_user(x):
     user._id = x
     return user
 
+def cadastrarUsuario(nome, email, senha):
+    user = {
+    "Nome": nome,
+    "E-mail": email,
+    "Senha": modelo.generate_password_hash(senha)
+    }
+    modelo.usuarios_collection.insert_one(user)
 
 
 @app.route('/', methods=['POST', 'GET'])
 def main():
     if request.method == 'POST':
-        loginNome = request.form['username']
+        loginEmail = request.form['email']
         loginSenha = request.form['password']
-        if modelo.loginuser(loginNome, loginSenha):
-            x= modelo.usuarios_collection.find({"Nome":loginNome})
+        if modelo.loginuser(loginEmail, loginSenha):
+            x= modelo.usuarios_collection.find({"E-mail":loginEmail})
             user = load_user(x)
             login_user(user)
             return redirect(url_for("/fazenda"))
@@ -43,7 +50,8 @@ def cadastro():
         nome = request.form['username']
         email = request.form['email']
         senha = request.form['password']
-        modelo.Usuario(nome, email, senha).cadastrar()
+        print('teste',email)
+        cadastrarUsuario(nome, email, senha)
         return redirect('/')
 
     return render_template('cadastro.html') 

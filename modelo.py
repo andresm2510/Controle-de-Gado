@@ -105,13 +105,9 @@ class Vaca(Animal):
 class Usuario:
     def __init__ (self, nome, email, senha):
     
-        self.nome = nome
-        self.email = email
-        self.senha = generate_password_hash(senha)
-
-    def cadastrar(self):
-        self.__dict__ = {'nome': self.nome, 'email': self.email, 'senha': self.senha}
-        usuarios_collection.insert_one(self.__dict__)
+        self.Nome = nome
+        self.Email = email
+        self.Senha = generate_password_hash(senha)
     
     def get_id(self):
         return str(self._id)
