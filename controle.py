@@ -11,6 +11,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+@login_manager.user_loader
 def load_user(x):
     user_data = modelo.Usuario(x)
     user = modelo.Usuario(user_data)
@@ -20,6 +21,7 @@ def load_user(x):
 @app.route('/', methods=['POST', 'GET'])
 def main():
     if request.method == 'POST':
+        print('teste', request.form)
         botaoSelecionado = request.form['botao']
         loginNome = request.form['username']
         loginSenha = request.form['password']
@@ -38,8 +40,9 @@ def main():
     return render_template("login.html")
 
 #página de cadastro das pessoas
-@app.route('/cadastro', methods=['POST', 'GET'])
+@app.route('/cadastro.html', methods=['POST', 'GET'])
 def cadastro():
+           
     if request.method == 'POST':
         nome = request.form['username']
         email = request.form['email']
@@ -47,9 +50,7 @@ def cadastro():
         modelo.Usuario(nome, email, senha).cadastrar()
         return redirect(url_for('/'))
 
-    else:
-       flash("Erro no cadastro")
-       return render_template("cadastro.html")
+    return render_template('cadastro.html') 
 
 #página principal da fazenda
 @app.route('/fazenda', methods=['POST', 'GET'])

@@ -2,14 +2,56 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 
 banco = MongoClient("mongodb+srv://andre:GpGIBvmocawfazxa@cluster0.egthg3z.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp")
-db= banco['ControleGado']
-collection = db['Gado']
-collection2= db['Vacas']
-collection3= db['usuarios']
 
+database = banco['controledegado']
+
+gado_collection = database['gado']
+vaca_collection = database['vaca']
+usuarios_collection = database['usuarios']
+
+
+gado_schema = {
+    'Peso': int,
+    'Raças': str,
+    'Brincos': str,
+    'Pastos': str,
+    'Dono': str,
+}
+
+vaca_schema = {
+    'Peso': int,
+    'Peso1': int,
+    'Peso2': int,
+    'Peso3': int,
+    'Raça': str,
+    'Brinco': str,
+    'Macho ou fêmea': bool,
+    'Tempo prenha': int,
+    'Tempo para parir': int,
+    'Qual pasto está': int,
+    'Qual touro está no pasto': str,
+    'Qual o gasto total nessa gestação': float,
+    'Qual o gasto total na vida': float,
+    'Quantas crias já teve': int,
+    'Tempo entre crias': int,
+    'Complicações': str,
+    'Vacinas': [str],
+}
+
+usuarios_schema = {
+    'Nome': str,
+    'E-mail': str,
+    'Senha': str,
+}
+
+gado_collection.create_index('Brinco', unique=True)
+vaca_collection.create_index('Brinco', unique=True)
+usuarios_collection.create_index('E-mail', unique=True)
+                                 
 class Animal:
-    def __init__ (self, _id, raça, pasto):
+    def __init__ (self, _id, brinco, raça, pasto):
         self._id = _id
+        self.brinco = brinco
         self.raça = raça
         self.pasto = pasto 
         self.peso = 0
@@ -27,7 +69,7 @@ class Animal:
 
     def cadastrar(self,peso):
         self.peso = peso
-        collection.insert_one(self.__dict__)
+        gado_collection.insert_one(self.__dict__)
         if self.sexo == 1:
             Vaca(self._id, self.raça, self.pasto).cadastrar()
         
@@ -44,14 +86,14 @@ class Vaca(Animal):
         self.dataCrias.append(dataCrias)
     
     def get_self(self , _id):
-        return collection.find_one({'_id': _id})
+        return gado_collection.find_one({'_id': _id})
     
     def cadastrar(self):
-        get_self = collection.find_one({'_id': self._id})################
-        collection2.insert_one(self.__dict__)
+        get_self = gado_collection.find_one({'_id': self._id})################
+        vaca_collection.insert_one(self.__dict__)
 
     def vizualizarVacas(self,brinco):
-        x= collection2.find_one({'_id': brinco})
+        x= vaca_collection.find_one({'_id': brinco})
         data= x['dataCrias']
         peso = x['peso']
         pasto = x['pasto']
@@ -68,14 +110,14 @@ class Usuario:
         self.senha = generate_password_hash(senha)
 
     def cadastrar(self):
-        collection3.insert_one(self.__dict__)
+        usuarios_collection.insert_one(self.__dict__)
     
     def get_id(self):
         return str(self._id)
 
 
     def login(self, nome, senha): 
-        x= collection3.find_one({'nome': nome})
+        x= usuarios_collection.find_one({'nome': nome})
         if x and check_password_hash(x['senha'], senha):
               return True
         
