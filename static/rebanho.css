@@ -268,6 +268,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-height: 90%;
     overflow-y: scroll;
 }
 
@@ -282,12 +283,44 @@
     background-color: #f0f0f0;
     transition: background-color 0.2s;
     margin-bottom: 20px;
-    overflow: hidden;
 }
 
-.gadoList.active .container_indicadores{
+.container_indicadores .container-hidden{
+    display: none;
+}
+
+.container_indicadores.active{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: space-around;
+    max-height: 90%;
+    max-width: 100%;
     height: auto;
 }
+
+.container_indicadores.active .container-hidden{
+    display: block;
+    height: 90%;
+    width: 100%;
+}
+
+.container_indicadores.active .container-hidden img{
+        max-height: 90%;
+        max-width: 100%;
+        width: 80px;
+        margin: 0;
+        padding: 0;
+}
+
+.container_indicadores .read_button::before{
+    content: 'Mostrar Mais';
+}
+
+.container_indicadores.active .read_button::before{
+    content: 'Mostrar Menos';
+}
+
 
 #read_button {
     border: none;
@@ -310,7 +343,6 @@
 .container {
     height: 90%;
     width: 100%;
-    margin: 15px;
 }
 
 .container p {
@@ -320,7 +352,8 @@
 }
 
 .container img {
-    height: 80px;
+    max-height: 90%;
+    max-width: 100%;
     width: 80px;
     margin: 0;
     padding: 0;
