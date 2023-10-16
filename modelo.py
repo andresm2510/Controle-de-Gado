@@ -49,7 +49,7 @@ usuarios_schema = {
 gado_collection.create_index('Brinco', unique=True)
 vaca_collection.create_index('Brinco', unique=True)
 usuarios_collection.create_index('E-mail', unique=True)
-                                 
+
 class Animal:
     def __init__ (self, _id, brinco, raça, pasto):
         self._id = _id
@@ -116,8 +116,8 @@ class Usuario(UserMixin):
         usuarios_collection.insert_one(self.__dict__)
     
     def get_user( email):
-       a=  usuarios_collection.find_one({'email': email})
-       return a
+        a=  usuarios_collection.find_one({'email': email})
+        return a
     
 
     def loginuser(email, senha): 

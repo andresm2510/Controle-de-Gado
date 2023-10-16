@@ -1,12 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/cadastro_animais.css">
     <title>Cadastro de Animais</title>
 </head>
+
 <body>
+    <header class="header">
+        <div class="perfil">
+            <nav class="nav_perfil">
+                <img src="/static/images/logo.png" class="logo">
+                <div class="lista-links">
+                    <div class="div-link">
+                        <a href="/templates/fazenda.html">Fazenda</a>
+                    </div>
+                    <div class="div-link">
+                        <a href="/templates/veterinaria.html">Veterinária</a>
+                    </div>
+                    <div class="div-link">
+                        <a href="/templates/rebanho.html">Rebanho</a>
+                    </div>
+                    <div class="div-link">
+                        <a href="/templates/cadastro_animais.html">Cadastro</a>
+                    </div>
+                </div>
+                <div class="botao_usuario" onclick="toggleMenu()">
+                    <p>Michael Wazawski</p>
+                    <img src="/static/images/mike.jfif" alt="Foto Usuario" class="foto_usuario">
+                </div>
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            <img src="/static/images/mike.jfif" alt="Foto Usuario">
+                            <h3>Michael Wazawski</h3>
+                        </div>
+
+                        <hr>
+
+                        <a href="/templates/config_conta.html" class="sub-menu-link">
+                            <img src="/static/images/user-detail-solid-24.png" alt="Foto Usuario">
+                            <p>Configurações da Conta</p>
+                            <span>></span>
+                        </a>
+                        <a href="/templates/ajuda_suporte.html" class="sub-menu-link">
+                            <img src="/static/images/help-circle-regular-24.png" alt="Foto Usuario">
+                            <p>Ajuda e Suporte</p>
+                            <span>></span>
+                        </a>
+                        <a href="/templates/contato.html" class="sub-menu-link">
+                            <img src="/static/images/phone-regular-24.png" alt="Foto Usuario">
+                            <p>Contato</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <img src="/static/images/exit-regular-24.png" alt="Foto Usuario">
+                            <p>Sair</p>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     
+    <h1 class ="tituloh1">Cadastro de Animais</h1>
+    <div class="main">
+        <div class="card-cadastro">
+            <form class="form-cadastro" id="form-cadastro" method="POST">
+                <div class="textfield">
+                    <label for="brinco">Brinco:</label>
+                    <input type="text" name="brinco" placeholder="Brinco" required>
+                </div>
+                <div class="textfield">
+                    <label for="sexo">Sexo:</label>
+                    <input type="text" name="sexo" placeholder="Sexo" required>
+                </div>
+                <div class="textfield">
+                    <label for="peso">Peso:</label>
+                    <input type="number" name="peso" placeholder="Peso" required>
+                </div>
+                <div class="textfield">
+                    <label for="tempo_prenha">Tempo Prenha:</label>
+                    <input type="number" name="tempo_prenha" placeholder="Tempo prenha">
+                </div>
+                <div class="textfield">
+                    <label for="tempo_parir">Tempo para Parir:</label>
+                    <input type="number" name="tempo_parir" placeholder="Tempo para parir">
+                </div>
+                <div class="textfield">
+                    <label for="pasto">Qual pasto está:</label>
+                    <input type="text" name="pasto" placeholder="Qual pasto" required>
+                </div>
+                <div class="textfield">
+                    <label for="touro">Qual touro está no pasto:</label>
+                    <input type="text" name="touro" placeholder="Qual touro" required>
+                </div>
+                <div class="textfield">
+                    <label for="gasto_gestacao">Gasto total nessa gestação:</label>
+                    <input type="number" name="gasto_gestacao" placeholder="Gasto total gestação">
+                </div>
+                <div class="textfield">
+                    <label for="gasto_vida">Gasto total na vida:</label>
+                    <input type="number" name="peso" placeholder="Gasto total vida">
+                </div>
+                <div class="textfield">
+                    <label for="crias">Quantas crias já teve:</label>
+                    <input type="number" name="crias" placeholder="Quantas crias">
+                </div>
+                <div class="textfield">
+                    <label for="tempo_crias">Tempo entre crias:</label>
+                    <input type="number" name="tempo_crias" placeholder="Tempo entre crias">
+                </div>
+                <div class="textfield">
+                    <label for="complicacoes">Complicações:</label>
+                    <input type="text" name="complicacoes" placeholder="Complicações">
+                </div>
+                <div class="textfield">
+                    <label for="vacinas">Vacinas:</label>
+                    <input type="text" name="vacinas" placeholder="Vacinas">
+                </div>
+                <div class="btns">
+                    <a href="/">
+                        <button class="btn-voltar" type="reset">Apagar</button>
+                    </a>
+                    <button class="btn-confirmar" type="submit">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js">
+    </script>
 </body>
+
 </html>
