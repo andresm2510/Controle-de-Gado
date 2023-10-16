@@ -110,20 +110,21 @@ class Usuario:
         self.senha = generate_password_hash(senha)
 
     def cadastrar(self):
+        self.__dict__ = {'nome': self.nome, 'email': self.email, 'senha': self.senha}
         usuarios_collection.insert_one(self.__dict__)
     
     def get_id(self):
         return str(self._id)
 
 
-    def login(self, nome, senha): 
+    
+
+def loginuser(nome, senha): 
         x= usuarios_collection.find_one({'nome': nome})
         if x and check_password_hash(x['senha'], senha):
-              return True
-        
+            return True
         else:
-              return False
-
+            return False
 
 
 

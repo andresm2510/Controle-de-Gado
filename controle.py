@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for , flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 # Incluindo o arquivo de modelo
-import modelo
+import modelo 
 
 app = Flask(__name__)
 app.secret_key = 'chave'  
@@ -18,25 +18,21 @@ def load_user(x):
     user._id = x
     return user
 
+
+
 @app.route('/', methods=['POST', 'GET'])
 def main():
     if request.method == 'POST':
-        print('teste', request.form)
-        botaoSelecionado = request.form['botao']
         loginNome = request.form['username']
         loginSenha = request.form['password']
-        if botaoSelecionado == 'logar':
-            if modelo.Usuario.login(loginNome, loginSenha):
-                x= modelo.Usuario.get_id(loginNome)
-                user = load_user(x)
-                login_user(user)
-                return redirect(url_for("/fazenda"))
-            else:
-                flash("Usuário ou senha incorretos")
-                return redirect(url_for("/"))
-
-        elif botaoSelecionado == 'cadastro':
-            return redirect(url_for('/cadastro'))
+        if modelo.loginuser(loginNome, loginSenha):
+            x= modelo.usuarios_collection.find({"Nome":loginNome})
+            user = load_user(x)
+            login_user(user)
+            return redirect(url_for("/fazenda"))
+        else:
+            flash("Usuário ou senha incorretos")
+            return redirect("/")
     return render_template("login.html")
 
 #página de cadastro das pessoas
@@ -48,20 +44,19 @@ def cadastro():
         email = request.form['email']
         senha = request.form['password']
         modelo.Usuario(nome, email, senha).cadastrar()
-        return redirect(url_for('/'))
+        return redirect('/')
 
     return render_template('cadastro.html') 
 
 #página principal da fazenda
-@app.route('/fazenda', methods=['POST', 'GET'])
-def login():
+@app.route('/fazenda.html', methods=['POST', 'GET'])
+def fazenda():
     if request.method=='POST':
-    
-
-        return render_template("fazenda.html")
+        return("/rebanho.html")
+    return render_template("fazenda.html")
 
 #página de cadastro dos animais
-@app.route('/rebanho', methods=['POST', 'GET'])
+@app.route('/rebanho.html', methods=['POST', 'GET'])
 def rebanho():
     '''
     APENAS UM PROTÓTIPO###########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -101,7 +96,7 @@ def rebanho():
     '''
     return render_template("rebanho.html")
 
-@app.route('/veterinaria', methods=['POST', 'GET'])
+@app.route('/veterinaria.html', methods=['POST', 'GET'])
 def veterinaria():
     return render_template("veterinaria.html")
 
