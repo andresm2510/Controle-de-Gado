@@ -1,0 +1,86 @@
+Linha 97 do arquivo fazenda.html
+<!--
+                {% for consulta in consultas %}
+                <div class="ocorrencia_container" id="ocorrencia_container">
+                    <p>Consulta Veterinaria</p>
+                    <p>{{consulta}}</p>
+                </div>
+                {% endfor %}
+                -->
+-------------------------------------------------
+Linha 121 do arquivo rebanho.html
+<!--
+            {% for animal in animais%}
+            <div class="gado-list" id="gado-list">
+                <div class="container_indicadores" id="sub-gado">
+                    <div class="container">
+                        <p>Brinco: {{brinco}}</p>
+                    </div>
+                    <div class="container">
+                        <p>Tipo de pasto: Pasto {{pasto}}</p>
+                    </div>
+                    <div class="container-hidden">
+                        <p>Peso Total: {{peso}}kg</p>
+                    </div>
+                    {% if animal.sexo = 1 %}
+                    <div class="container-hidden">
+                        <p>Ultima gestação: há {{animal.gestacao}}semanas</p>
+                    </div>
+                    {% endif %}
+                    <div class="container-hidden">
+                        <p>Tipo de ração: Aquela mesma</p>
+                    </div>
+                    <div class="container-hidden">
+                        <p>Tipo de ração: Aquela mesma</p>
+                    </div>
+                    <div class="container-hidden">
+                        <p>Tipo de ração: Aquela mesma</p>
+                    </div>
+                    <div class="container-hidden">
+                        <p>Tipo de ração: Aquela mesma</p>
+                    </div>
+                </div>
+            </div>  
+            {% endfor %}  
+            -->
+---------------------------------------------------
+Linha 73 do arquivo veterinaria.html
+<div class="fazenda-left">
+            <h1 class = "titulo_gestacoes">Gestações: </h1>
+            <!--for para gerar varios containers-indicadores-->
+            <!--Separar apenas vacas gravidas para dispor na lista - if tempo_prenha == "1"
+            DUDINHA FEZ ALGO ;) -->
+
+        <!--{% for animal in animais%}
+                {% if {{animal.prenha}} == 1 %}
+                    <div class="container_indicadores">
+                        <div class="container">
+                            <p>Brinco:</p>
+                            <p>{{brinco}}</p>
+                        <div class="container">
+                            <p>Raça: </p>
+                            <p>{{raca}}</p>
+                        </div>
+                        </div>
+                        <div class="container">
+                            <p>Tempo para parir:</p>
+                            <p>{{tempo_parto}}</p>
+                        </div>
+                        <div class="container">
+                            <p>Tipo do pasto:</p>
+                            <p>{{pasto}}</p>
+                        </div>
+                        <div class="container">
+                            <p>Quantidade total de crias:</p>
+                            <p>{{crias}}</p>
+                        </div>
+                        <div class="container">
+                            <p>Data da última cria: </p>
+                            <p>{{tempo_entre_crias}}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %} -->
+            </div>
+        </div>
+------------------------------------------------------

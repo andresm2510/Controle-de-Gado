@@ -13,18 +13,18 @@
         <div class="perfil">
             <nav class="nav_perfil">
                 <img src="/static/images/logo.png" class="logo">
-                <div class = "lista-links">
-                    <div class = "div-link">
-                        <a href = "/templates/fazenda.html">Fazenda</a>
+                <div class="lista-links">
+                    <div class="div-link">
+                        <a href="/fazenda">Fazenda</a>
                     </div>
-                    <div class = "div-link">
-                        <a href = "/templates/veterinaria.html">Veterinária</a>
+                    <div class="div-link">
+                        <a href="/veterinaria">Veterinária</a>
                     </div>
-                    <div class = "div-link">
-                        <a href = "/templates/rebanho.html">Rebanho</a>
+                    <div class="div-link">
+                        <a href="/rebanho">Rebanho</a>
                     </div>
-                    <div class = "div-link">
-                        <a href = "/templates/cadastro_animais.html">Cadastro</a>
+                    <div class="div-link">
+                        <a href="/cadastro_animais">Cadastro</a>
                     </div>
                 </div>
                 <div class="botao_usuario" onclick="toggleMenu()">
@@ -64,26 +64,25 @@
             </nav>
         </div>
     </header>
-
     <div class="main-fazenda">
         <div class="fazenda-left">
             <h1>Indicadores: </h1>
             <div class="container_indicadores">
                 <div class="container">
-                    <h1>234</h1>
+                    <h1>{{cabecasGado}}</h1>
                     <h3>Cabeças de gado</h3>
                 </div>
                 <div class="container">
-                    <h1>17</h1>
+                    <h1>{{vacasGestantes}}</h1>
                     <h3>Gestações</h3>
                 </div>
                 <div class="container">
-                    <h1>R$233,05</h1>
+                    <h1>243,00</h1>
                     <h3>Cotação do arroba do boi hoje</h3>
                 </div>
                 <div class="container">
-                    <h1>3.000 Kg</h1>
-                    <h3>Consumo de ração <br>Equivale a R$7.000,00</h3>
+                    <h1>{{consumoRacao}} Kg</h1>
+                    <h3>Consumo de ração</h3>
                 </div>
             </div>
         </div>
@@ -92,27 +91,7 @@
             <div class="ocorrencias">
                 <div class="ocorrencia_container" id="ocorrencia_container">
                     <p>Consulta Veterinaria</p>
-                    <p>20/10/2023</p>
-                </div>
-                <div class="ocorrencia_container" id="ocorrencia_container">
-                    <p>Consulta Veterinaria</p>
-                    <p>20/10/2023</p>
-                </div>
-                <div class="ocorrencia_container" id="ocorrencia_container">
-                    <p>Consulta Veterinaria</p>
-                    <p>20/10/2023</p>
-                </div>
-                <div class="ocorrencia_container" id="ocorrencia_container">
-                    <p>Consulta Veterinaria</p>
-                    <p>20/10/2023</p>
-                </div>
-                <div class="ocorrencia_container" id="ocorrencia_container">
-                    <p>Consulta Veterinaria</p>
-                    <p>20/10/2023</p>
-                </div>
-                <div class="ocorrencia_container" id="ocorrencia_container">
-                    <p>Consulta Veterinaria</p>
-                    <p>20/10/2023</p>
+                    <p>20/12/2023</p>
                 </div>
             </div>
         </div>
@@ -120,7 +99,7 @@
 
 
     <script src="/static/js/script.js"></script>
-    
+
 </body>
 
 </html>

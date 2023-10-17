@@ -14,18 +14,18 @@
         <div class="perfil">
             <nav class="nav_perfil">
                 <img src="/static/images/logo.png" class="logo">
-                <div class = "lista-links">
-                    <div class = "div-link">
-                        <a href = "/templates/fazenda.html">Fazenda</a>
+                <div class="lista-links">
+                    <div class="div-link">
+                        <a href="/fazenda">Fazenda</a>
                     </div>
-                    <div class = "div-link">
-                        <a href = "/templates/veterinaria.html">Veterinária</a>
+                    <div class="div-link">
+                        <a href="/veterinaria">Veterinária</a>
                     </div>
-                    <div class = "div-link">
-                        <a href = "/templates/rebanho.html">Rebanho</a>
+                    <div class="div-link">
+                        <a href="/rebanho">Rebanho</a>
                     </div>
-                    <div class = "div-link">
-                        <a href = "/templates/cadastro_animais.html">Cadastro</a>
+                    <div class="div-link">
+                        <a href="/cadastro_animais">Cadastro</a>
                     </div>
                 </div>
                 <div class="botao_usuario" onclick="toggleMenu()">
@@ -66,6 +66,23 @@
         </div>
     </header>
 
+    <!-- CODIGO CHATGPT ESTRUTURA FOR
+    <div class="gado-list" id="gado-list">
+        {% for gado in gado_data %}
+        <div class="container_indicadores">
+            <div class="container">
+                <p>Brinco: {{ gado.brinco }}</p>
+            </div>
+            <div class="container">
+                <p>Tipo de pasto: {{ gado.tipo_de_pasto }}</p>
+            </div>
+                Adicione outras informações do gado aqui
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    </div>-->
+
     <div class="main-fazenda">
         <div class="fazenda-left">
             <div class="searchbar">
@@ -77,67 +94,6 @@
             </div>
             <div class="gado-list" id="gado-list">
                 <div class="container_indicadores" id="sub-gado">
-                    <div class="container">
-                        <img src="/static/images/cow-face.png" alt="Vaquinha">
-                    </div>
-                    <div class="container">
-                        <p>Brinco: 1234567</p>
-                    </div>
-                    <div class="container">
-                        <p>Tipo de pasto: Pasto A</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Peso Total: 500kg</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Ultima gestação: há 8 semanas</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                </div>
-                <div class="container_indicadores" id="sub-gado">
-                    <div class="container">
-                        <img src="/static/images/cow-face.png" alt="Vaquinha">
-                    </div>
-                    <div class="container">
-                        <p>Brinco: 1234567</p>
-                    </div>
-                    <div class="container">
-                        <p>Tipo de pasto: Pasto A</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Peso Total: 500kg</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Ultima gestação: há 8 semanas</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                </div>
-                <div class="container_indicadores" id="sub-gado">
-                    <div class="container">
-                        <img src="/static/images/cow-face.png" alt="Vaquinha">
-                    </div>
                     <div class="container">
                         <p>Brinco: 1234567</p>
                     </div>

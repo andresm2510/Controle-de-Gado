@@ -36,6 +36,7 @@ def main():
         loginSenha = request.form['password']
         '''print(loginEmail, loginSenha)'''
         teste = Usuario.loginuser(loginEmail, loginSenha)
+        global u
         if teste:
             '''x= "loginEmail"
             user = load_user(x)
@@ -56,6 +57,7 @@ def cadastro():
         senha = request.form['password']
         print('teste',email)
         '''cadastrarUsuario(nome, email, senha)'''
+        global u
         u = Usuario(nome=nome, email=email, senha=senha)
         u.cadastrar()
         return redirect('/')
@@ -67,53 +69,69 @@ def cadastro():
 def fazenda():
     if request.method=='POST':
         return("/rebanho.html")
-    return render_template("fazenda.html")
+    
+    a = retornaFazenda()
+    cabecasGado = a[0]
+    vacasGestantes = a[1]
+    consumoRacao = a[2]
+    consultas = a[3]
+    return render_template("fazenda.html", cabecasGado=cabecasGado, vacasGestantes=vacasGestantes, consumoRacao=consumoRacao, consultas=consultas)
 
 #página de cadastro dos animais
 @app.route('/rebanho', methods=['POST', 'GET'])
 def rebanho():
     '''
-    APENAS UM PROTÓTIPO###########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if isVaca == 1:
-            brinco = request.form['brinco']
-            raça = request.form['raça']
-            pasto = request.form['pasto']
-            peso = request.form['peso']
-            gestacao = request.form['gestacao']
-            dataCria = request.form['dataCria']
-            modelo.Animal.cadastrar(brinco, raça, pasto, peso)
-            flash("Vaca cadastrada com sucesso")
-            return redirect(url_for('/rebanho'))
+    x = db
 
-    '''
-    '''
-        if isVaca == 0:
-            brinco = request.form['brinco']
-            raça = request.form['raça']
-            pasto = request.form['pasto']
-            peso = request.form['peso']
-            x= modelo.Animal.cadastrar(brinco, raça, pasto, peso)
-            modelo.Animal.touro(x)
-            flash("Touro cadastrado com sucesso")
-            return redirect(url_for('/rebanho'))
-    
-        else:
-            prox= request.form['prox'](seria um botão que redireciona para a página de vizualização de vacas)########!!!!!!!!!!!!!!!!!!!!!!!!
-            if prox == 'vizualizar':
-                brinco = request.form['brinco']
-                x= modelo.Vaca.vizualizarVacas(brinco)
-                data= x['dataCrias']
-                peso = x['peso']
-                pasto = x['pasto']
-                return render_template("vizualizar.html", data, peso, pasto)###########!!!!!!!!!!!!!!!!!!!!!!
-            
+    animais = 
     '''
     return render_template("rebanho.html")
 
 @app.route('/veterinaria', methods=['POST', 'GET'])
 def veterinaria():
-    return render_template("veterinaria.html")
+    a = Vaca.vizualizarVacas()
+    peso = a[0]
+    raca = a[1]
+    brinco = a[2]
+    sexo = a[3]
+    tempo_prenha = a[4]
+    tempo_parto = a[5]
+    pasto = a[6]
+    gasto_gestacao = a[7]
+    gasto_vida = a[8]
+    crias = a[9]
+    tempo_entre_crias =a[10]
+    complicacoes = a[11]
+    vacinas = a[12]
 
+    usuario = Usuario.get_user()
+
+    return render_template("veterinaria.html", usuario=usuario, peso=peso, raca=raca, brinco=brinco, sexo=sexo, tempo_prenha=tempo_prenha, tempo_parto=tempo_parto, pasto=pasto, gasto_gestacao=gasto_gestacao, gasto_vida=gasto_vida, crias=crias, tempo_entre_crias=tempo_entre_crias, complicacoes=complicacoes, vacinas=vacinas)
+
+@app.route("/cadastro_animais", methods=['POST', 'GET'])
+def cadastro_animais():
+    if request.method == 'POST':
+        peso = request.form['peso']
+        raca = request.form['raca']
+        brinco = request.form['brinco']
+        sexo = request.form['sexo']
+        tempo_parto = request.form['tempo_parto']
+        pasto = request.form['pasto']
+        gasto_gestacao = request.form['gasto_gestacao']	
+        gasto_vida = request.form['gasto_vida']
+        crias = request.form['crias']
+        tempo_entre_crias = request.form['tempo_entre_crias']
+        complicacoes = request.form['complicacoes']
+        vacinas = request.form['vacinas']
+        if tempo_parto != 0:
+            prenha = True
+            
+        x = Animal(peso , raca,brinco,sexo, prenha,tempo_parto , pasto , gasto_gestacao ,gasto_vida, crias, tempo_entre_crias, complicacoes, vacinas)
+        x.cadastrar()
+        flash("Vaca cadastrada com sucesso")
+        return redirect("/cadastro_animais")
+    return render_template("cadastro_animais.html")
+     
 
 @app.route('/detalhes_gado/<int:gado_id>', methods=['GET'])
 def detalhes_gado(gado_id):
