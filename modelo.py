@@ -171,7 +171,6 @@ class Usuario:
             s1 = check_password_hash(s, senha)
             if x and s1:
                 print(senha ,'ok')
-          
                 return True
             else:
                 return False

@@ -102,24 +102,37 @@ def fazenda():
     vacasGestantes = a[1]
     consumoRacao = a[2]
     consultas = a[3]
+    racao = (getcabecas() * 14)
     
-    return render_template("fazenda.html", usuario=u, cabecasGado=cabecasGado, vacasGestantes=vacasGestantes, consumoRacao=consumoRacao, consultas=consultas)
+    return render_template("fazenda.html", usuario=u, cabecasGado=cabecasGado, vacasGestantes=vacasGestantes, consumoRacao=racao, consultas=consultas)
 
 #página de cadastro dos animais
 @app.route('/rebanho', methods=['POST', 'GET'])
 def rebanho():
     global user_atual
     global u
+    vacas = []
     x = Vaca.vizualizarBrincos()
     for brinco in x:
         a = Vaca.vizualizarVacas(int(brinco))
         id = brinco
-        print(f"Brinco: {brinco}")
         pasto = a[6]
         peso = a[0]
         sexo = a[3]
         ultimaGestacao = a[4]
-    return render_template("rebanho.html", usuario=u, animais=x, brinco=id, pasto=pasto, peso=peso, sexo=sexo, ultimaGestacao=ultimaGestacao)
+        
+        vaca_info = {
+            "brinco": id,
+            "pasto": pasto,
+            "peso": peso,
+            "sexo": sexo,
+            "ultimaGestacao": ultimaGestacao
+        }
+
+        vacas.append(vaca_info)
+        
+    return render_template("rebanho.html", usuario=u, animais=vacas)
+    #return render_template("rebanho.html", usuario=u, animais=x, brinco=id, pasto=pasto, peso=peso, sexo=sexo, ultimaGestacao=ultimaGestacao)
 
 @app.route('/veterinaria', methods=['POST', 'GET'])
 def veterinaria():

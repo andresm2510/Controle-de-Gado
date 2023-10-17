@@ -85,56 +85,21 @@
 
     <div class="main-fazenda">
         <div class="fazenda-left">
-            <div class="searchbar">
-                <form action="" class="form_searchbar">
-                    <input type="text" placeholder="Pesquise o seu chifrudo:" name="q">
-                    <button type="submit"><img src="/static/images/search-alt-2-regular-24.png"
-                            alt="Pesquisar"></button>
-                </form>
-            </div>
-            <div class="gado-list" id="gado-list">
-                <div class="container_indicadores" id="sub-gado">
-                    <div class="container">
-                        <p>Brinco: 1234567</p>
-                    </div>
-                    <div class="container">
-                        <p>Tipo de pasto: Pasto A</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Peso Total: 500kg</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Ultima gestação: há 8 semanas</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                    <div class="container-hidden">
-                        <p>Tipo de ração: Aquela mesma</p>
-                    </div>
-                </div>
-            </div>
             {% for animal in animais%}
             <div class="gado-list" id="gado-list">
                 <div class="container_indicadores" id="sub-gado">
                     <div class="container">
-                        <p>Brinco: {{brinco}}</p>
+                        <p>Brinco: {{animal.brinco}}</p>
                     </div>
                     <div class="container">
-                        <p>Tipo de pasto: Pasto {{pasto}}</p>
+                        <p>Número de pasto: Pasto {{animal.pasto}}</p>
                     </div>
                     <div class="container-hidden">
-                        <p>Peso Total: {{peso}}kg</p>
+                        <p>Peso Total: {{animal.peso}}kg</p>
                     </div>
-                    {% if sexo == 1 %}
+                    {% if animal.sexo == 1 %}
                     <div class="container-hidden">
-                        <p>Ultima gestação: há {{ultimaGestacao}}semanas</p>
+                        <p>Ultima gestação: há {{animal.ultimaGestacao}}semanas</p>
                     </div>
                     {% endif %}
                 </div>
