@@ -203,14 +203,6 @@
     height: 100vh;
 }
 
-.titulo_gestacoes{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color:#1e4613;
-    text-align: center;
-    font-size: 24px;
-}
-
 .fazenda-left{
     align-items: center;
     border-radius: 10px;
@@ -222,6 +214,14 @@
     margin: 0 80px;
     padding: 5px;
     overflow-y: auto;
+}
+
+.titulo_gestacoes{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:#1e4613;
+    text-align: center;
+    font-size: 24px;
 }
 
 .container_indicadores{

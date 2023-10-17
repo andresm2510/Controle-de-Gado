@@ -119,7 +119,6 @@ class Vaca(Animal):
         x = gado_collection.find_one({'brinco': brinco})
         #if x is not None:
         peso = x['peso']
-        print(f"Peso= {peso}")
         raca = x['raca']
         brinco = x['brinco']
         sexo = x['sexo']

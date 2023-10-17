@@ -297,7 +297,7 @@ body{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 400px;
+    height: 230px;
     max-width: 90%;
     margin:20px;
     padding:50px;
@@ -354,6 +354,7 @@ body{
     height: 90%;
     width: 100%;
     transition: .2s;
+    margin: 10px;
 }
 
 .container p {

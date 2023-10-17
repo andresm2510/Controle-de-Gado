@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/veterinaria.css">
-    <title>Veterinaria</title>
+    <title>Gestação</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
                         <a href="/fazenda">Fazenda</a>
                     </div>
                     <div class="div-link">
-                        <a href="/veterinaria">Veterinária</a>
+                        <a href="/veterinaria">Gestações</a>
                     </div>
                     <div class="div-link">
                         <a href="/rebanho">Rebanho</a>
@@ -68,6 +68,46 @@
     </header>
 
     <div class="main-fazenda">
+        <div class="fazenda-left">
+            <h1 class = "titulo_gestacoes">Gestações: </h1>
+            <!--for para gerar varios containers-indicadores-->
+            <!--Separar apenas vacas gravidas para dispor na lista - if prenha == 1
+            DUDINHA FEZ ALGO ;) -->
+
+            {% for animal in animais %}
+            {% if animal.sexo == 1 %}
+                    <div class="container_indicadores">
+                        <div class="container">
+                            <p>Brinco:</p>
+                            <p>{{ animal.brinco }}</p>
+                        </div>
+                        <div class="container">
+                            <p>Raça: </p>
+                            <p>{{ animal.raca }}</p>
+                        </div>
+                        <div class="container">
+                            <p>Número do pasto:</p>
+                            <p>{{ animal.pasto }}</p>
+                        </div>
+                        {% if animal.prenha != None %}
+                        <div class="container">
+                            <p>Tempo para parir:</p>
+                            <p>{{ animal.tempo_parto }}</p>
+                        </div>
+                        {% endif %}
+                        <div class="container">
+                            <p>Quantidade total de crias:</p>
+                            <p>{{ animal.crias }}</p>
+                        </div>
+                        <div class="container">
+                            <p>Data da última cria: </p>
+                            <p>{{ animal.tempo_entre_crias }}</p>
+                        </div>
+                    </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
     </div>
 
     <script src="/static/js/script.js"></script>

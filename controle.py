@@ -75,7 +75,7 @@ def config_conta():
         senha = request.form['password']
         Usuario.trocar(user_atual[0], nome, email, senha)
         return redirect('/config_conta')
-    return render_template('config_conta.html')
+    return render_template('config_conta.html', usuario=u)
 
 @app.route('/contato', methods=['GET', 'POST'])
 def contato():
@@ -138,23 +138,41 @@ def rebanho():
 def veterinaria():
     global u
     global user_atual
-    x = getcabecas()
-    #if x!=0 or x != None:
-    a = Vaca.vizualizarVacas(brinco)
-    peso = a[0]
-    raca = a[1]
-    brinco = a[2]
-    sexo = a[3]
-    tempo_prenha = a[4]
-    tempo_parto = a[5]
-    pasto = a[6]
-    gasto_gestacao = a[7]
-    gasto_vida = a[8]
-    crias = a[9]
-    tempo_entre_crias =a[10]
-    complicacoes = a[11]
-    vacinas = a[12]
-    return render_template("veterinaria.html", usuario=u, peso=peso, raca=raca, brinco=brinco, sexo=sexo, tempo_prenha=tempo_prenha, tempo_parto=tempo_parto, pasto=pasto, gasto_gestacao=gasto_gestacao, gasto_vida=gasto_vida, crias=crias, tempo_entre_crias=tempo_entre_crias, complicacoes=complicacoes, vacinas=vacinas)
+    x = Vaca.vizualizarBrincos()
+    vacas = []
+    for brinco in x:
+        a = Vaca.vizualizarVacas(int(brinco))
+        id = brinco
+        pasto = a[6]
+        peso = a[0]
+        prenha = a[4]
+        sexo = a[3]
+        ultimaGestacao = a[4]
+        raca = a[1]
+        tempo_parto = a[5]
+        gasto_vida = a[8]
+        crias = a[9]
+        complicações = a[10]
+        vacinas = a[11]
+    
+        vaca_info = {
+            "brinco": id,
+            "pasto": pasto,
+            "peso": peso,
+            "prenha": prenha,
+            "sexo": sexo,
+            "ultimaGestacao": ultimaGestacao,
+            'raca': raca,
+            'tempo_parto': tempo_parto,
+            'gasto_vida': gasto_vida,
+            'crias': crias,
+            'complicações': complicações,
+            'vacinas': vacinas,
+        }
+            
+        vacas.append(vaca_info)
+        
+    return render_template("veterinaria.html", usuario=u, animais=vacas)
 
     '''else:
         flash("Não há animais cadastrados")

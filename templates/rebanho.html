@@ -19,7 +19,7 @@
                         <a href="/fazenda">Fazenda</a>
                     </div>
                     <div class="div-link">
-                        <a href="/veterinaria">Veterinária</a>
+                        <a href="/veterinaria">Gestações</a>
                     </div>
                     <div class="div-link">
                         <a href="/rebanho">Rebanho</a>
@@ -65,32 +65,23 @@
             </nav>
         </div>
     </header>
-
-    <!-- CODIGO CHATGPT ESTRUTURA FOR
-    <div class="gado-list" id="gado-list">
-        {% for gado in gado_data %}
-        <div class="container_indicadores">
-            <div class="container">
-                <p>Brinco: {{ gado.brinco }}</p>
-            </div>
-            <div class="container">
-                <p>Tipo de pasto: {{ gado.tipo_de_pasto }}</p>
-            </div>
-                Adicione outras informações do gado aqui
-        </div>
-        {% endfor %}
-    </div>
-    </div>
-    </div>-->
-
     <div class="main-fazenda">
         <div class="fazenda-left">
-            {% for animal in animais%}
+            {% for animal in animais %}
             <div class="gado-list" id="gado-list">
                 <div class="container_indicadores" id="sub-gado">
                     <div class="container">
                         <p>Brinco: {{animal.brinco}}</p>
                     </div>
+                    {% if animal.sexo == 1 %}
+                    <div class="container-hidden">
+                        <p>Sexo: Fêmea</p>
+                    </div>
+                    {% else %}
+                    <div class="container-hidden">
+                        <p>Sexo: Macho</p>
+                    </div>
+                    {% endif%}
                     <div class="container">
                         <p>Número de pasto: Pasto {{animal.pasto}}</p>
                     </div>
@@ -99,7 +90,7 @@
                     </div>
                     {% if animal.sexo == 1 %}
                     <div class="container-hidden">
-                        <p>Ultima gestação: há {{animal.ultimaGestacao}}semanas</p>
+                        <p>Ultima gestação: há {{animal.ultimaGestacao}} semanas</p>
                     </div>
                     {% endif %}
                 </div>
