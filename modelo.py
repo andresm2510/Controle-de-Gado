@@ -112,8 +112,14 @@ class Usuario(UserMixin):
         self.senha = generate_password_hash(senha)
     
 
-    def cadastrar(self):
-        usuarios_collection.insert_one(self.__dict__)
+    def cadastrar(nome,email,senha):
+        print(email)
+        time.sleep(10)
+        
+        usuarios_collection.insert_one({'nome': nome, 'email': email, 'senha': senha})
+
+        
+        '''usuarios_collection.insert_one(self.__dict__)'''
     
     def get_user( email):
         a=  usuarios_collection.find_one({'email': email})
