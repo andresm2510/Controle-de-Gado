@@ -202,7 +202,8 @@ nav.menu_lateral.expandir .txt-link{
 }
 
 .textfield > input::placeholder{
-    color: #f0ffff94
+    color: white;
+    font-weight: 500;
 }
 
 .btns{

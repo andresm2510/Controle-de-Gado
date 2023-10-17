@@ -106,7 +106,7 @@ def rebanho():
 
 @app.route('/veterinaria', methods=['POST', 'GET'])
 def veterinaria():
-    a = Vaca.vizualizarVacas()
+    a = Vaca.vizualizarVacas(brinco)
     peso = a[0]
     raca = a[1]
     brinco = a[2]
