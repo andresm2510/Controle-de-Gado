@@ -9,6 +9,7 @@
 
 /* Header */
 
+
 .perfil {
     width: 100%;
     background: #1e4613;
@@ -190,13 +191,13 @@
 
 /*Conteudo*/
 
-.main{
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.card-cadastro{
+.card-cadastro {
     margin: 10px;
     width: 60%;
     display: flex;
@@ -209,20 +210,22 @@
     box-shadow: 0px 10px 40px #00000056;
 }
 
-.card-cadastro > h1{
+.card-cadastro>h1 {
     color: hsl(0, 0%, 100%);
     font-weight: 800;
     margin: 0;
 }
 
-.form-cadastro{
+.form-cadastro {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
-.textfield{
+.textfield {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -231,7 +234,7 @@
     width: 40%;
 }
 
-.textfield > input{
+.textfield>input {
     width: 100%;
     border: none;
     border-radius: 10px;
@@ -244,22 +247,22 @@
     box-sizing: border-box;
 }
 
-.textfield > label{
+.textfield>label {
     color: #f0ffffde;
     margin-bottom: 10px;
 }
 
-.textfield > input::placeholder{
+.textfield>input::placeholder {
     color: #f0ffff94
 }
 
-.btns{
+.btns {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.btns > a{
+.btns>a {
     display: flex;
     width: 50%;
     justify-content: space-between;
@@ -267,7 +270,7 @@
     text-decoration: none;
 }
 
-.btn-confirmar{
+.btn-confirmar {
     width: 100%;
     flex: 1;
     padding: 16px 0px;
@@ -284,7 +287,7 @@
     box-shadow: 0px 10px 40px -12px #00000056;
 }
 
-.btn-voltar{
+.btn-voltar {
     width: 100%;
     flex: 1;
     padding: 16px 0px;
@@ -301,8 +304,8 @@
     box-shadow: 0px 10px 40px -12px #00000056;
 }
 
-.tituloh1{
+.tituloh1 {
     text-align: center;
-    margin:5px;
+    margin: 5px;
     color: #1e4613;
 }
