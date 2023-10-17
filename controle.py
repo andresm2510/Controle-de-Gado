@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for , flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import time
 # Incluindo o arquivo de modelo
-import modelo 
+from modelo import * 
 
 app = Flask(__name__)
 app.secret_key = 'chave'  
@@ -25,17 +25,17 @@ def load_user(email):
             print(f"Error creating user object: {e}")
     return None
 '''
-def cadastrarUsuario(nome, email, senha):
+'''def cadastrarUsuario(nome, email, senha):
     x = modelo.Usuario(nome, email, senha)
-    modelo.Usuario.cadastrar(x)
-
+    Usuario.cadastrar(nome, email, senha)
+'''
 @app.route('/', methods=['POST', 'GET'])
 def main():
     if request.method == 'POST':
         loginEmail = request.form['email']
         loginSenha = request.form['password']
         '''print(loginEmail, loginSenha)'''
-        teste = modelo.Usuario.loginuser(loginEmail, loginSenha)
+        teste = Usuario.loginuser(loginEmail, loginSenha)
         if teste:
             '''x= "loginEmail"
             user = load_user(x)
@@ -55,7 +55,9 @@ def cadastro():
         email = request.form['email']
         senha = request.form['password']
         print('teste',email)
-        cadastrarUsuario(nome, email, senha)
+        '''cadastrarUsuario(nome, email, senha)'''
+        u = Usuario(nome=nome, email=email, senha=senha)
+        u.cadastrar()
         return redirect('/')
 
     return render_template('cadastro.html') 

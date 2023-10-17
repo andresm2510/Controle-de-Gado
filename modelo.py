@@ -9,7 +9,7 @@ database = banco['controledegado']
 
 gado_collection = database['gado']
 vaca_collection = database['vaca']
-usuarios_collection = database['usuarios']
+usuarios_collection = database['users']
 
 
 gado_schema = {
@@ -46,9 +46,9 @@ usuarios_schema = {
     'Senha': str,
 }
 
-gado_collection.create_index('Brinco', unique=True)
-vaca_collection.create_index('Brinco', unique=True)
-usuarios_collection.create_index('E-mail', unique=True)
+gado_collection.create_index('brinco', unique=True)
+vaca_collection.create_index('brinco', unique=True)
+usuarios_collection.create_index('email', unique=True)
 
 class Animal:
     def __init__ (self, _id, brinco, raça, pasto):
@@ -104,7 +104,7 @@ class Vaca(Animal):
 
     
 
-class Usuario(UserMixin):
+class Usuario:
     def __init__ (self, nome, email, senha):
     
         self.nome = nome
@@ -112,11 +112,11 @@ class Usuario(UserMixin):
         self.senha = generate_password_hash(senha)
     
 
-    def cadastrar(nome,email,senha):
-        print(email)
-        time.sleep(10)
+    def cadastrar(self):
         
-        usuarios_collection.insert_one({'nome': nome, 'email': email, 'senha': senha})
+        
+        
+        usuarios_collection.insert_one({'nome': self.nome, 'email': self.email, 'senha': self.senha})
 
         
         '''usuarios_collection.insert_one(self.__dict__)'''
@@ -130,12 +130,12 @@ class Usuario(UserMixin):
         x= usuarios_collection.find_one({'email': email})
         if x is not None:
             print('email ok')
-            time.sleep(20)
+            time.sleep(5)
             s = x['senha']
             s1 = check_password_hash(s, senha)
             if x and s1:
                 print('senha ok')
-                time.sleep(20)
+                time.sleep(5)
                 return True
             else:
                 return False
