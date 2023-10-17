@@ -62,7 +62,24 @@ def cadastro():
         u.cadastrar()
         return redirect('/')
 
-    return render_template('cadastro.html') 
+    return render_template('cadastro.html')
+
+@app.route('/config_conta', methods=['POST','GET'])
+def config_conta():
+    if request.method == 'POST':
+        nome = request.form['username']
+        email = request.form['email']
+        senha = request.form['password']
+        return redirect('/config_conta')
+    return render_template('config_conta.html')
+
+@app.route('/contato', methods=['GET', 'POST'])
+def contato():
+    return render_template('contato.html')
+
+@app.route('/suporte', methods=['GET','POST'])
+def ajuda():
+    return render_template('ajuda_suporte.html')
 
 #página principal da fazenda
 @app.route('/fazenda', methods=['POST', 'GET'])
@@ -131,7 +148,6 @@ def cadastro_animais():
         flash("Vaca cadastrada com sucesso")
         return redirect("/cadastro_animais")
     return render_template("cadastro_animais.html")
-     
 
 @app.route('/detalhes_gado/<int:gado_id>', methods=['GET'])
 def detalhes_gado(gado_id):
