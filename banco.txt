@@ -48,7 +48,7 @@ Linha 73 do arquivo veterinaria.html
 <div class="fazenda-left">
             <h1 class = "titulo_gestacoes">Gestações: </h1>
             <!--for para gerar varios containers-indicadores-->
-            <!--Separar apenas vacas gravidas para dispor na lista - if tempo_prenha == "1"
+            <!--Separar apenas vacas gravidas para dispor na lista - if prenha == 1
             DUDINHA FEZ ALGO ;) -->
 
         <!--{% for animal in animais%}

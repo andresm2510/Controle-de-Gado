@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 from flask_login import UserMixin
-import time
+
 
 banco = MongoClient("mongodb+srv://andre:GpGIBvmocawfazxa@cluster0.egthg3z.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp")
 
@@ -14,9 +14,9 @@ fazenda_collection = database['fazenda']
 
 ''' talvez funcao para matar vacas'''
 
-'''#so pra comecar
-fazenda_collection.insert_one({'cabecasGado': 0 , 'vacasGestantes': 0 ,  'consumoRacao': 0, 'consultas': 0})
-'''
+#so pra comecar
+#fazenda_collection.insert_one({'cabecasGado': 0 , 'vacasGestantes': 0 ,  'consumoRacao': 0, 'consultas': 0})
+
 
 gado_schema = {
     'peso': int,
@@ -29,17 +29,16 @@ gado_schema = {
 vaca_schema = {
     'peso': int,
     'raca': str,
-    'brinco': str,
-    'sexo': bool,
-    'prenha': bool,
+    'brinco': int,
+    'sexo': int,
+    'prenha': int,
     'tempo_parto': int,
     'pasto': int,
-    'gasto_gestacao': float,
-    'gasto_vida': float,
+    'gasto_gestacao': int,
+    'gasto_vida': int,
     'crias': int,
-    'tempo_entre_crias': int,
     'complicações': str,
-    'vacinas': bool,
+    'vacinas': int,
 }
 
 usuarios_schema = {
@@ -53,19 +52,18 @@ vaca_collection.create_index('brinco', unique=True)
 usuarios_collection.create_index('email', unique=True)
 
 class Animal:
-    def __init__ (self, peso, raca, brinco,sexo,prenha,tempo_parto, pasto, gasto_gestacao, gasto_vida, crias, tempo_entre_crias, complicacoes, vacinas):
-        self.brinco = brinco
+    def __init__ (self, peso, raca, brinco,sexo,prenha,tempo_parto, pasto, gasto_gestacao, gasto_vida, crias, complicacoes, vacinas):
+        self.brinco = int(brinco)
         self.raca = raca
-        self.pasto = pasto 
-        self.peso = peso
-        self.sexo = sexo
-        if sexo == 1:
-            self.prenha = prenha
-            self.tempo_parto = tempo_parto
-            self.gasto_gestacao = gasto_gestacao
-            self.crias = crias
-            tempo_entre_crias = tempo_entre_crias
-        
+        self.pasto = int(pasto) 
+        self.peso = int(peso)
+        self.sexo = int(sexo)
+        if int(sexo) == 1:
+            self.prenha = int(prenha)
+            self.tempo_parto = int(tempo_parto)
+            self.gasto_gestacao = int(gasto_gestacao)
+            self.crias = int(crias)
+            
         else:
             self.prenha = 0
             self.tempo_parto = 0
@@ -74,8 +72,8 @@ class Animal:
             tempo_entre_crias = 0
 
         self.complicacoes = complicacoes
-        self.gasto_vida = gasto_vida   
-        self.vacinas = vacinas
+        self.gasto_vida = int(gasto_vida)   
+        self.vacinas = int(vacinas)
 
     def atualizarPeso (self, peso):
         self.peso = peso
@@ -112,24 +110,30 @@ class Vaca(Animal):
         if self.prenha == 1:
             fazenda_collection.update_one({}, {'$inc': {'vacasGestantes': 1}})
 
+    def vizualizarBrincos():
+        x = gado_collection.find({'brinco': {'$exists': True}})
+        brinco_values = [doc['brinco'] for doc in x]
+        return brinco_values
+
     def vizualizarVacas(brinco):
-        x= vaca_collection.find_one({'brinco': brinco})
-        if x is not None:
-            peso = x['peso']
-            raca = x['raca']
-            brinco = x['brinco']
-            sexo = x['sexo']
-            tempo_prenha = x['prenha']
-            tempo_parto = x['tempo_parto']
-            pasto = x['pasto']
-            gasto_gestação = x['gasto_gestacao']
-            gasto_vida = x['gasto_vida']
-            crias = x['crias']
-            tempo_entre_crias = x['tempo_entre_crias']
-            complicações = x['complicacoes']
-            vacinas = x['vacinas']
+        x = gado_collection.find_one({'brinco': brinco})
+        #if x is not None:
+        peso = x['peso']
+        print(f"Peso= {peso}")
+        raca = x['raca']
+        brinco = x['brinco']
+        sexo = x['sexo']
+        tempo_prenha = x['prenha']
+        tempo_parto = x['tempo_parto']
+        pasto = x['pasto']
+        gasto_gestação = x['gasto_gestacao']
+        gasto_vida = x['gasto_vida']
+        crias = x['crias']
+        complicações = x['complicacoes']
+        vacinas = x['vacinas']
+        a = [peso, raca, brinco, sexo, tempo_prenha, tempo_parto, pasto, gasto_gestação, gasto_vida, crias, complicações, vacinas]
+        return a
             
-            return (peso, raca, brinco, sexo, tempo_prenha, tempo_parto, pasto, gasto_gestação, gasto_vida, crias, tempo_entre_crias, complicações, vacinas)
         
 
 class Usuario:
@@ -141,19 +145,22 @@ class Usuario:
     
 
     def cadastrar(self):
-        
-        
-        
         usuarios_collection.insert_one({'nome': self.nome, 'email': self.email, 'senha': self.senha})
 
-        
         '''usuarios_collection.insert_one(self.__dict__)'''
     
-    def get_user( self):
-        a=  usuarios_collection.find_one({'email': self.email})
+    def get_user(email):
+        a=  usuarios_collection.find_one({'email': email})
         b= a['nome']
-        return b
+        c = a['email']
+        d = a['senha']
+        return (b,c,d)
     
+    def get_nome(email):
+        x=usuarios_collection.find_one({'email': email})	
+        a= x['nome']
+        return a
+
 
     def loginuser(email, senha): 
         x= usuarios_collection.find_one({'email': email})
@@ -173,6 +180,9 @@ class Usuario:
             print('erro no email')
             return False    
 
+    def trocar(nome_antigo, nome , email,senha):
+        usuarios_collection.update_one({'nome': nome_antigo},{'$set':{'nome':nome,'email': email,'senha':senha}})
+
 def retornaFazenda():
     x = fazenda_collection.find_one({})
     cabecasGado = x['cabecasGado']
@@ -181,13 +191,10 @@ def retornaFazenda():
     consultas = x['consultas']
     return (cabecasGado, vacasGestantes, consumoRacao, consultas)
 
-
-'''teste database
-x=Animal(1, 'Holandesa', 'Pasto 1')
-x.atualizarPeso(500)
-x.cadastrar()
-'''
-
+def getcabecas():
+    x = fazenda_collection.find_one({})
+    cabecasGado = x['cabecasGado']
+    return cabecasGado	
 
 '''
 class Touro(Animal):

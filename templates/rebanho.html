@@ -29,14 +29,14 @@
                     </div>
                 </div>
                 <div class="botao_usuario" onclick="toggleMenu()">
-                    <p>Michael Wazawski</p>
+                    <p>{{usuario}}</p>
                     <img src="/static/images/mike.jfif" alt="Foto Usuario" class="foto_usuario">
                 </div>
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
                         <div class="user-info">
                             <img src="/static/images/mike.jfif" alt="Foto Usuario">
-                            <h3>Michael Wazawski</h3>
+                            <h3>{{ususario}}</h3>
                         </div>
 
                         <hr>
@@ -120,6 +120,26 @@
                     </div>
                 </div>
             </div>
+            {% for animal in animais%}
+            <div class="gado-list" id="gado-list">
+                <div class="container_indicadores" id="sub-gado">
+                    <div class="container">
+                        <p>Brinco: {{brinco}}</p>
+                    </div>
+                    <div class="container">
+                        <p>Tipo de pasto: Pasto {{pasto}}</p>
+                    </div>
+                    <div class="container-hidden">
+                        <p>Peso Total: {{peso}}kg</p>
+                    </div>
+                    {% if sexo == 1 %}
+                    <div class="container-hidden">
+                        <p>Ultima gestação: há {{ultimaGestacao}}semanas</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
         </div>
 
         <script src="/static/js/script.js"></script>

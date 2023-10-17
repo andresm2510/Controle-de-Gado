@@ -1,7 +1,6 @@
 # Incluindo as bibliotecas
 from flask import Flask, render_template, request, redirect, url_for , flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-import time
 # Incluindo o arquivo de modelo
 from modelo import * 
 
@@ -37,6 +36,9 @@ def main():
         '''print(loginEmail, loginSenha)'''
         teste = Usuario.loginuser(loginEmail, loginSenha)
         global u
+        global user_atual
+        u =Usuario.get_nome(loginEmail)
+        user_atual = Usuario.get_user(loginEmail)
         if teste:
             '''x= "loginEmail"
             user = load_user(x)
@@ -57,7 +59,6 @@ def cadastro():
         senha = request.form['password']
         print('teste',email)
         '''cadastrarUsuario(nome, email, senha)'''
-        global u
         u = Usuario(nome=nome, email=email, senha=senha)
         u.cadastrar()
         return redirect('/')
@@ -66,24 +67,33 @@ def cadastro():
 
 @app.route('/config_conta', methods=['POST','GET'])
 def config_conta():
+    global u
+    global user_atual
     if request.method == 'POST':
         nome = request.form['username']
         email = request.form['email']
         senha = request.form['password']
+        Usuario.trocar(user_atual[0], nome, email, senha)
         return redirect('/config_conta')
     return render_template('config_conta.html')
 
 @app.route('/contato', methods=['GET', 'POST'])
 def contato():
+    global u
+    global user_atual
     return render_template('contato.html')
 
 @app.route('/suporte', methods=['GET','POST'])
 def ajuda():
+    global u
+    global user_atual  
     return render_template('ajuda_suporte.html')
 
 #página principal da fazenda
 @app.route('/fazenda', methods=['POST', 'GET'])
 def fazenda():
+    global u
+    global user_atual
     if request.method=='POST':
         return("/rebanho.html")
     
@@ -92,20 +102,31 @@ def fazenda():
     vacasGestantes = a[1]
     consumoRacao = a[2]
     consultas = a[3]
-    return render_template("fazenda.html", cabecasGado=cabecasGado, vacasGestantes=vacasGestantes, consumoRacao=consumoRacao, consultas=consultas)
+    
+    return render_template("fazenda.html", usuario=u, cabecasGado=cabecasGado, vacasGestantes=vacasGestantes, consumoRacao=consumoRacao, consultas=consultas)
 
 #página de cadastro dos animais
 @app.route('/rebanho', methods=['POST', 'GET'])
 def rebanho():
-    '''
-    x = db
-
-    animais = 
-    '''
-    return render_template("rebanho.html")
+    global user_atual
+    global u
+    x = Vaca.vizualizarBrincos()
+    for brinco in x:
+        a = Vaca.vizualizarVacas(int(brinco))
+        id = brinco
+        print(f"Brinco: {brinco}")
+        pasto = a[6]
+        peso = a[0]
+        sexo = a[3]
+        ultimaGestacao = a[4]
+    return render_template("rebanho.html", usuario=u, animais=x, brinco=id, pasto=pasto, peso=peso, sexo=sexo, ultimaGestacao=ultimaGestacao)
 
 @app.route('/veterinaria', methods=['POST', 'GET'])
 def veterinaria():
+    global u
+    global user_atual
+    x = getcabecas()
+    #if x!=0 or x != None:
     a = Vaca.vizualizarVacas(brinco)
     peso = a[0]
     raca = a[1]
@@ -120,13 +141,17 @@ def veterinaria():
     tempo_entre_crias =a[10]
     complicacoes = a[11]
     vacinas = a[12]
+    return render_template("veterinaria.html", usuario=u, peso=peso, raca=raca, brinco=brinco, sexo=sexo, tempo_prenha=tempo_prenha, tempo_parto=tempo_parto, pasto=pasto, gasto_gestacao=gasto_gestacao, gasto_vida=gasto_vida, crias=crias, tempo_entre_crias=tempo_entre_crias, complicacoes=complicacoes, vacinas=vacinas)
 
-    usuario = Usuario.get_user()
-
-    return render_template("veterinaria.html", usuario=usuario, peso=peso, raca=raca, brinco=brinco, sexo=sexo, tempo_prenha=tempo_prenha, tempo_parto=tempo_parto, pasto=pasto, gasto_gestacao=gasto_gestacao, gasto_vida=gasto_vida, crias=crias, tempo_entre_crias=tempo_entre_crias, complicacoes=complicacoes, vacinas=vacinas)
+    '''else:
+        flash("Não há animais cadastrados")
+        return render_template("veterinaria.html", "0 animais cadastrados", usuario=u)
+    '''
 
 @app.route("/cadastro_animais", methods=['POST', 'GET'])
 def cadastro_animais():
+    global u
+    global user_atual
     if request.method == 'POST':
         peso = request.form['peso']
         raca = request.form['raca']
@@ -140,14 +165,15 @@ def cadastro_animais():
         tempo_entre_crias = request.form['tempo_entre_crias']
         complicacoes = request.form['complicacoes']
         vacinas = request.form['vacinas']
-        if tempo_parto != 0:
-            prenha = True
-            
-        x = Animal(peso , raca,brinco,sexo, prenha,tempo_parto , pasto , gasto_gestacao ,gasto_vida, crias, tempo_entre_crias, complicacoes, vacinas)
+        if int(tempo_parto) != 0:
+            prenha = 1
+        else:
+            prenha = 0
+        x = Animal(int(peso) , raca,int(brinco),int(sexo), int(prenha),int(tempo_parto) , int(pasto) , int(gasto_gestacao) ,int(gasto_vida), int(crias), complicacoes, int(vacinas))
         x.cadastrar()
         flash("Vaca cadastrada com sucesso")
         return redirect("/cadastro_animais")
-    return render_template("cadastro_animais.html")
+    return render_template("cadastro_animais.html", usuario=u)
 
 @app.route('/detalhes_gado/<int:gado_id>', methods=['GET'])
 def detalhes_gado(gado_id):
