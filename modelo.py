@@ -92,7 +92,6 @@ class Animal:
         fazenda_collection.update_one({}, {'$inc': {'cabecasGado': 1}})
         if self.sexo == 1:
             Vaca.cadastrar(self)
-        
 
 class Vaca(Animal):
     def __init__ (self, peso, raca, brinco,sexo,prenha,tempo_parto, pasto, gasto_gestacao, gasto_vida, crias, tempo_entre_crias, complicacoes, vacinas ):
@@ -179,7 +178,8 @@ class Usuario:
             return False    
 
     def trocar(nome_antigo, nome , email,senha):
-        usuarios_collection.update_one({'nome': nome_antigo},{'$set':{'nome':nome,'email': email,'senha':senha}})
+        x = generate_password_hash(senha)
+        usuarios_collection.update_one({'nome': nome_antigo},{'$set':{'nome':nome,'email': email,'senha':x}})
 
 def retornaFazenda():
     x = fazenda_collection.find_one({})

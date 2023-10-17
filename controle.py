@@ -75,8 +75,7 @@ def config_conta():
         senha = request.form['password']
         Usuario.trocar(user_atual[0], nome, email, senha)
         u = nome
-        user_atual[1] = email
-        return redirect('/config_conta', usuario = u, email = user_atual[1])
+        return render_template('config_conta.html', usuario = u, email = user_atual[1])
     return render_template('config_conta.html', usuario=u, email=user_atual[1])
 
 @app.route('/contato', methods=['GET', 'POST'])
